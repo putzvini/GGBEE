@@ -5,8 +5,11 @@ class CreateCasts < ActiveRecord::Migration[6.0]
       t.time :cast_time
       t.integer :cast_view
       t.integer :cast_like
-      t.ineteger :cast_dislike
+      t.integer :cast_dislike
       t.integer :cast_comment
+
+      t.belongs_to :round, null: false, foreign_key: true
+
 
       t.timestamps
     end
