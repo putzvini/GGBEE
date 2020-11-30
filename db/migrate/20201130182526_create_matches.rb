@@ -9,7 +9,9 @@ class CreateMatches < ActiveRecord::Migration[6.0]
       t.integer :match_dislike
       t.integer :match_comment
 
-      t.belongs_to :cast, null: false, foreign_key: true
+      t.references :cast, foreign_key: true
+      t.references :blue_team,  foreign_key: {to_table: 'teams'}
+      t.references :red_team, foreign_key: {to_table: 'teams'}
 
       t.timestamps
     end
