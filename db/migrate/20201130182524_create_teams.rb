@@ -5,8 +5,6 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :team_long_name
       t.string :team_tag
 
-      t.belongs_to :match, null: false, foreign_key: true
-
       t.timestamps
     end
   end
