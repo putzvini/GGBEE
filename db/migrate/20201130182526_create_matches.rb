@@ -1,7 +1,7 @@
 class CreateMatches < ActiveRecord::Migration[6.0]
   def change
     create_table :matches do |t|
-      t.string :cast_url
+      t.string :match_url
       t.date :match_date
       t.time :match_time
       t.integer :match_view

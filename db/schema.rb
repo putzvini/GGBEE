@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_182605) do
   enable_extension "plpgsql"
 
   create_table "casts", force: :cascade do |t|
+    t.string "cast_url"
     t.date "cast_date"
     t.time "cast_time"
     t.integer "cast_view"
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_182605) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string "cast_url"
+    t.string "match_url"
     t.date "match_date"
     t.time "match_time"
     t.integer "match_view"
