@@ -4,17 +4,26 @@
   grid-gap: 16px;
 }
 
+.card {
+  border: rgba(0,0,0,0);
+  background: rgba(0,0,0,0);
+}
+
 .split_card {
   display: flex;
   width: 100px;
-  text-align: center;
   margin: 5px;
   border-radius: 50%;
 }
 
-.card-text p {
-  margin: 0;
-  padding: 0.8em 0;
+.split_card img {
+  display: flex;
+  width: 100px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.split-name p {
   line-height: 1.4;
   font-weight: 300;
   text-align: center;
