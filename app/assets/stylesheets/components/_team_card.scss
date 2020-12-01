@@ -1,0 +1,16 @@
+.carousel_card {
+  display: flex;
+  width: 100px;
+  text-align: center;
+}
+
+.team-logo-img {
+  height: 100px;
+  object-fit: cover;
+}
+
+.team-name p {
+  line-height: 1.4;
+  font-weight: 300;
+  text-align: center;
+}
