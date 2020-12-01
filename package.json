@@ -1,5 +1,5 @@
 {
-  "name": "GGBEE",
+  "name": "ok",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -7,12 +7,34 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.3",
+    "chart.js": "^2.9.4",
+    "chartkick": "^3.2.1",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "tiny-slider": "^2.9.3",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "description": "Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/putzvini/GGBEE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/putzvini/GGBEE/issues"
+  },
+  "homepage": "https://github.com/putzvini/GGBEE#readme"
 }
