@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_175931) do
+ActiveRecord::Schema.define(version: 2020_11_30_182526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "casts", force: :cascade do |t|
+    t.string "cast_url"
+    t.date "cast_date"
+    t.time "cast_time"
+    t.integer "cast_view"
+    t.integer "cast_like"
+    t.integer "cast_dislike"
+    t.integer "cast_comment"
+    t.bigint "round_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["round_id"], name: "index_casts_on_round_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.string "match_url"
+    t.date "match_date"
+    t.time "match_time"
+    t.integer "match_view"
+    t.integer "match_like"
+    t.integer "match_dislike"
+    t.integer "match_comment"
+    t.bigint "cast_id"
+    t.bigint "blue_team_id"
+    t.bigint "red_team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blue_team_id"], name: "index_matches_on_blue_team_id"
+    t.index ["cast_id"], name: "index_matches_on_cast_id"
+    t.index ["red_team_id"], name: "index_matches_on_red_team_id"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.string "round_stage"
+    t.integer "round_day"
+    t.date "round_date"
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tournament_id"], name: "index_rounds_on_tournament_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "team_name"
+    t.string "team_long_name"
+    t.string "team_tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.integer "season"
+    t.integer "split"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +84,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_175931) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "casts", "rounds"
+  add_foreign_key "matches", "casts"
+  add_foreign_key "matches", "teams", column: "blue_team_id"
+  add_foreign_key "matches", "teams", column: "red_team_id"
+  add_foreign_key "rounds", "tournaments"
 end
