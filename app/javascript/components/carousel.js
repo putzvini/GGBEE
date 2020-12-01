@@ -3,7 +3,8 @@ const carousel = () => {
       container: '.teams-carrousel',
       items: 4,
       slideBy: 'page',
-      autoplay: true
+      nav: false,
+      rewind: true
   });
 };
 
