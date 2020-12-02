@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_182526) do
+ActiveRecord::Schema.define(version: 2020_12_01_182154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_11_30_182526) do
   create_table "casts", force: :cascade do |t|
     t.string "cast_url"
     t.date "cast_date"
-    t.time "cast_time"
     t.integer "cast_view"
     t.integer "cast_like"
     t.integer "cast_dislike"
@@ -26,13 +25,13 @@ ActiveRecord::Schema.define(version: 2020_11_30_182526) do
     t.bigint "round_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cast_time"
     t.index ["round_id"], name: "index_casts_on_round_id"
   end
 
   create_table "matches", force: :cascade do |t|
     t.string "match_url"
     t.date "match_date"
-    t.time "match_time"
     t.integer "match_view"
     t.integer "match_like"
     t.integer "match_dislike"
@@ -42,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_182526) do
     t.bigint "red_team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "match_time"
     t.index ["blue_team_id"], name: "index_matches_on_blue_team_id"
     t.index ["cast_id"], name: "index_matches_on_cast_id"
     t.index ["red_team_id"], name: "index_matches_on_red_team_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_182526) do
 
   create_table "rounds", force: :cascade do |t|
     t.string "round_stage"
-    t.integer "round_day"
+    t.string "round_day"
     t.date "round_date"
     t.bigint "tournament_id", null: false
     t.datetime "created_at", precision: 6, null: false
