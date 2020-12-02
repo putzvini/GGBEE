@@ -1,0 +1,121 @@
+<div class="container p-4">
+
+  <div class="row">
+
+    <div class="col-12" id="split-carousel">
+      <h4>Past Split</h4>
+      <br>
+      <div class="split_carousel_cards_grid">
+        <div class="card">
+          <div class="split_card">
+            <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
+          </div>
+          <div>
+            <p class="split-name">2019 - Split 1</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="split_card">
+            <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
+          </div>
+          <div>
+            <p class="split-name">2019 - Split 2</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="split_card">
+            <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
+          </div>
+          <div>
+            <p class="split-name">2020 - Split 1</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="split_card">
+            <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
+          </div>
+          <div>
+            <p class="split-name">2020 - Split 2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-8">
+      <h1>CBLOL #{SEASON} - SPLIT #{SPLIT}</h1>
+      <p>Data collected from casting videos on YouTube</p>
+      <br>
+      <div class="info_cards_grid">
+        <div class="card">
+          <h5>Broadcasts</h5>
+          <p>48</p>
+        </div>
+        <div class="card">
+          <h5>Broadcast Time</h5>
+          <p>247:34:31</p>
+        </div>
+        <div class="card">
+          <h5>Matches brodcasted</h5>
+          <p>191</p>
+        </div>
+        <div class="card">
+          <h5>Views in casting videos</h5>
+          <p>33.258.366</p>
+        </div>
+        <div class="card">
+          <h5>Avg. views per cast</h5>
+          <p>692.883</p>
+        </div>
+        <div class="card">
+          <h5>Likes in casting videos</h5>
+          <p>2.861</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <%= image_tag 'taca_cblol.jpg', class: "cup-img" %>
+    </div>
+  </div>
+
+  <br>
+
+  <div id="top-watched-chart">
+    <h2>Most watched broadcasts</h2>
+    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
+  </div>
+
+  <br>
+
+  <div id="audience-chart">
+    <h2>Audience round by round</h2>
+    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
+  </div>
+
+  <br>
+
+  <div id="top-audience-table">
+    <h2>Top 5 Audiences</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Tournament</th>
+            <th>Teams</th>
+            <th>Views</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CBLOL 2020 - Split 1</td>
+            <td>Team 1 x Team 2</td>
+            <td>241.650</td>
+            <td>09.04.20</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <br>
+
+</div>
