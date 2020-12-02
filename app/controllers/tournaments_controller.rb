@@ -1,5 +1,10 @@
 class TournamentsController < ApplicationController
   def index
-      @test = array.sort
+    @tournaments = Tournament.all
   end
+
+  def show
+    @tournament = Tournament.find(params[:id])
+  end
+
 end
