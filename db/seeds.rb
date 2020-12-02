@@ -1,3 +1,56 @@
+# seed for teams table
+puts "Creating teams"
+
+# team array = name, longa_name, tag and photo path
+cnb = Team.create!(team_name: "cnb",
+      team_long_name: "cnb e-sports",
+      team_tag: "cnb"
+      )
+fla = Team.create!(team_name: "flamengo",
+      team_long_name: "flamengo e-sports",
+      team_tag: "fla"
+      )
+fur = Team.create!(team_name: "furia",
+      team_long_name: "furia e-sports",
+      team_tag: "fur"
+      )
+itz = Team.create!(team_name: "intz",
+      team_long_name: "intz",
+      team_tag: "itz"
+      )
+kbm = Team.create!(team_name: "kabum",
+      team_long_name: "kabum e-sports",
+      team_tag: "kbm"
+      )
+png = Team.create!(team_name: "pain",
+      team_long_name: "pain gaming",
+      team_tag: "png"
+      )
+prg = Team.create!(team_name: "prodigy",
+      team_long_name: "prodigy e-sports",
+      team_tag: "prg"
+      )
+rdp = Team.create!(team_name: "redemption",
+      team_long_name: "redemption e-sports",
+      team_tag: "rdp"
+      )
+san = Team.create!(team_name: "santos",
+      team_long_name: "santos hotforex",
+      team_tag: "san"
+      )
+one = Team.create!(team_name: "team one",
+      team_long_name: "team one e-sports",
+      team_tag: "one"
+      )
+up = Team.create!(team_name: "uppercut",
+      team_long_name: "uppercut e-sports",
+      team_tag: "up"
+      )
+vk = Team.create!(team_name: "keyd",
+      team_long_name: "vivo keyd",
+      team_tag: "vk"
+      )      
+
 # seed for tournaments table
 puts 'Creating tournaments'
 
@@ -16,349 +69,768 @@ cblol_2020_1 = Tournament.create!(season: 2020,
 cblol_2020_2 = Tournament.create!(season: 2020,
                                   split: 2
 )
+# seed methods
+puts "creating methods for seed"
 
-# seed for teams table
-puts "Creating teams"
+def seed_db(array)
+  array.each_with_index do |hash, i|
+    round = Round.create!(round_stage: hash[:stage],
+                          round_day: (i + 1).to_s,
+                          round_date: hash[:date],
+                          tournament_id: hash[:tournament]
+            )
+    
+    cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+    cast_video = JSON.parse(cast_response.body)
 
-# team array = name, longa_name, tag and photo path
-cnb = ["cnb", "cnb e-sports", "cnb"]
-flamengo = ["flamengo", "flamengo e-sports", "fla"]
-intz = ["intz", "intz", "itz"]                   
-kabum = ["kabum", "kabum e-sports", "kbm"]
-keyd = ["keyd", "vivo keyd", "vk",]
-pain = ["pain", "pain gaming", "png"]
-redemption = ["redemption", "redemption e-sports", "rdp"]
-team_one = ["team one" , "team one e-sports", "one",]
-uppercut = ["uppercut", "uppercut e-sports", "up"]
-furia = ["furia", "furia e-sports", "fur"]
-prodigy = [ "prodigy", "prodigy e-sports", "prg"]
-santos = ["santos", "santos hotforex", "san"]
+    cast_duration = cast_video["items"].first["contentDetails"]['duration']
 
+    cast = Cast.create!(cast_url: cast_video["items"].first["id"],
+                        cast_date: hash[:date],
+                        cast_time: ISO8601::Duration.new(cast_duration).to_seconds,
+                        cast_view: cast_video["items"].first["statistics"]["viewCount"].to_i,
+                        cast_like: cast_video["items"].first["statistics"]["likeCount"].to_i,
+                        cast_dislike: cast_video["items"].first["statistics"]["dislikeCount"].to_i,
+                        cast_comment: cast_video["items"].first["statistics"]["commentCount"].to_i,
+                        round_id: round.id
+           )
+    hash[:matches].each do |match|
+      match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+      match_video = JSON.parse(match_response.body)
 
-teams = [ cnb, flamengo, furia, intz, kabum, keyd, pain, prodigy, redemption, santos, team_one, uppercut ]
+      match_duration = match_video["items"].first["contentDetails"]['duration']
 
-teams.each do |team|
-  Team.create!(team_name: team[0],
-              team_long_name: team[1],
-              team_tag: team[2],
-  )
-end
-
-# seed rounds table
-
-def seed_point_rounds(dates, stage, tournament)
-  dates.each_with_index do |round, i|
-    Round.create!(round_stage: stage,
-                  round_day: (i + 1).to_s,
-                  round_date: Date.new(tournament.season, round[0], round[1]),
-                  tournament_id: tournament.id
-    )
-  end
-end
-
-def seed_playoffs_rounds(dates, stage, tournament)
-  playoffs = ["semi 1", "semi 2", "sfinal"]
-  dates.each_with_index do |round, i|
-    Round.create!(round_stage: stage,
-                  round_day: playoffs[i],
-                  round_date: Date.new(tournament.season, round[0], round[1]),
-                  tournament_id: tournament.id
-    )
-  end
-end
-
-points = "pontos"
-playoffs = "playoffs"
-
-# seed rounds table for 2019 split 1
-puts "Seeding rounds table for 2019 split 1"
-
-s2019_1_dates_points = [
-          [1,12],
-          [1,13],
-          [1,19],
-          [1,20],
-          [1,26],
-          [1,27],
-          [2,2],
-          [2,3],
-          [2,9],
-          [2,10],
-          [2,16],
-          [2,17],
-          [2,23],
-          [2,24],
-          [3,8],
-          [3,9],
-          [3,10],
-          [3,16],
-          [3,17],
-          [3,23],
-          [3,24]
-]
-
-s2019_1_dates_playoffs = [ [4,6], [4,7], [4,13] ]
-
-seed_point_rounds(s2019_1_dates_points, points, cblol_2019_1)
-seed_playoffs_rounds(s2019_1_dates_playoffs, playoffs, cblol_2019_1)
-
-
-# exception date in split 1 - 2019
-# Round.create!(round_stage: points,
-#               round_day: 9.to_s,
-#               round_date: Date.new(2019, 2, 11),
-#               tournament_id: cblol_2019_1.id
-# )
-
-# promotion series  in split 1 - 2019
-Round.create!(round_stage: playoffs,
-              round_day: "promoção",
-              round_date: Date.new(2019, 4, 27),
-              tournament_id: cblol_2019_1.id
-) 
-
-# seed rounds table for 2019 split 2
-puts "Seeding rounds table for 2019 split 2"
-
-s2019_2_dates_points = [
-          [6,1],
-          [6,2],
-          [6,8],
-          [6,9],
-          [6,15],
-          [6,16],
-          [6,22],
-          [6,23],
-          [6,29],
-          [6,30],
-          [7,6],
-          [7,7],
-          [7,13],
-          [7,14],
-          [7,20],
-          [7,21],
-          [7,27],
-          [7,28],
-          [8,3],
-          [8,4],
-          [8,10]
-]
-
-s2019_2_dates_playoffs = [ [8,24], [8,25], [9,7] ]
-
-seed_point_rounds(s2019_2_dates_points, points, cblol_2019_2)
-seed_playoffs_rounds(s2019_2_dates_playoffs, playoffs, cblol_2019_2)
-
-# promotion series  in split 2 - 2019
-
-Round.create!(round_stage: playoffs,
-              round_day: "promoção",
-              round_date: Date.new(2019, 9, 21),
-              tournament_id: cblol_2019_2.id
-) 
-
-# seed rounds table for 2020 split 1
-puts "Seeding rounds table for 2020 split 1"
-
-s2020_1_dates_points = [
-          [1,25],
-          [1,26],
-          [2,1],
-          [2,2],
-          [2,8],
-          [2,9],
-          [2,29],
-          [3,1],
-          [3,7],
-          [3,8],
-          [3,14],
-          [3,15],
-          [4,10],
-          [4,11],
-          [4,12],
-          [4,17],
-          [4,18],
-          [4,19],
-          [4,24],
-          [4,25],
-          [4,26]
-]
-
-s2020_1_dates_playoffs = [ [5,2], [5,3], [5,9] ]
-
-seed_point_rounds(s2020_1_dates_points, points, cblol_2020_1)
-seed_playoffs_rounds(s2020_1_dates_playoffs, playoffs, cblol_2020_1)
-
-Round.create!(round_stage: playoffs,
-              round_day: "promoção",
-              round_date: Date.new(2020, 5, 19),
-              tournament_id: cblol_2020_1.id
-) 
-
-# seed rounds table for 2020 split 2
-puts "Seeding rounds table for 2020 split 2"
-
-s2020_2_dates_points = [
-          [6,6],
-          [6,7],
-          [6,13],
-          [6,14],
-          [6,20],
-          [6,21],
-          [6,27],
-          [6,28],
-          [7,4],
-          [7,5],
-          [7,11],
-          [7,12],
-          [7,18],
-          [7,19],
-          [7,25],
-          [7,26],
-          [8,1],
-          [8,2],
-          [8,7],
-          [8,8],
-          [8,9]
-]
-
-s2020_2_dates_playoffs = [ [8,22], [8,23], [9,5] ]
-
-seed_point_rounds(s2020_2_dates_points, points, cblol_2020_2)
-seed_playoffs_rounds(s2020_2_dates_playoffs, playoffs, cblol_2020_2)
-
-
-puts "Seeding casts"
-
-# seed for casts tables
-def seed_casts(array)
-  array.each_with_index do |cast_id, index|
-      response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{cast_id}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
-      video = JSON.parse(response.body)
-      
-      year = video["items"].first["snippet"]["publishedAt"][0..3].to_i
-      month = video["items"].first["snippet"]["publishedAt"][5..6].to_i
-      day = video["items"].first["snippet"]["publishedAt"][8..9].to_i
-      date = Date.new(year, month, day)
-
-      duration = video["items"].first["contentDetails"]['duration']
-
-      Cast.create!(cast_url: video["items"].first["id"],
-                  cast_date: date,
-                  cast_time: ISO8601::Duration.new(duration).to_seconds,
-                  cast_view: video["items"].first["statistics"]["viewCount"].to_i,
-                  cast_like: video["items"].first["statistics"]["likeCount"].to_i,
-                  cast_dislike: video["items"].first["statistics"]["dislikeCount"].to_i,
-                  cast_comment: video["items"].first["statistics"]["commentCount"].to_i,
-                  round_id: index+1
+      Match.create!(match_url: match_video["items"].first["id"],
+                    match_date: hash[:date],
+                    match_time: ISO8601::Duration.new(match_duration).to_seconds,
+                    match_view: match_video["items"].first["statistics"]["viewCount"].to_i,
+                    match_like: match_video["items"].first["statistics"]["likeCount"].to_i,
+                    match_dislike: match_video["items"].first["statistics"]["dislikeCount"].to_i,
+                    match_comment: match_video["items"].first["statistics"]["commentCount"].to_i,
+                    blue_team_id: match[:blue_team].id,
+                    red_team_id: match[:red_team].id,
+                    cast_id: cast.id
       )
-  end
+    end  
+  end    
 end
 
-# casts_ids_2019_1
-casts_ids = ["tGsGeGnV43o", "q5rp5Bz2UJ0", 
-              "si6ZeXANXxs", "PSqifma3hIw", 
-              "p10GM_k2zvc", "NFnwNkYrpT4", 
-              "NL0GPjs-4Ao", "POeX9tvodSc", 
-              "pyN8tcBQ1mk", "5av3YLvBpv4", 
-              "Pv_8q7d9VUQ", "8F47LxkjCMc", 
-              "Bq6Wl2U-yQ4", "phwSPTyqzJo", 
-              "NqMEiWk4DUY", "-kZDQ87gYTQ", "hHNHX9a3o4Y", 
-              "w1kmkMFGPzo", "9Mma9Lk36V4",
-              "NOaNywpkPWc", "Zf3gC5ANkbg",
-              "lnyhNVUp28I", "M7ylOFR-v98",
-              "hgJUToNgMhs", "JFcu61p4Pw8",
-# casts_ids_2019_2
-              "ovAX_jxM_Iw", "bArlhEh4ukQ",
-              "Zv_C0JKm-T0", "MzMCZ5KF7HA",
-              "73UnuYSJxas", "UEANqE4_GvE",
-              "T0UlCzcll5A", "TT1wEuNFtQ8",
-              "TOyKE6r7Vkw", "5rNC1u8MsY8",
-              "i3a_zIWJEEY", "BvaAoWQM1UI",
-              "LdXJo6tfQBs", "wQPt2hmMyk0",
-              "URgEDR4al48", "sk5uo-9tA6o",
-              "PzjWvectF3c", "o-8aWxjo_V4",
-              "WEa-7G9cu1Q", "LG6xpQQ755E",
-              "D3LYHZsY-gE",
-              "j1NLSuO_hjs", "a-bcicoTxwg",
-              "n2D_LNxS8_s", "bAOic1hVkcg",
-# casts_ids_2020_1 
-              "sDQUz_VKtUM", "kPHxCfkofTw",
-              "TE67O6srtSY", "OWdMxkbx-qI",
-              "CC_dLdnn2I4", "wyQPEThm-ck",
-              "ASMYlu5NbFQ", "38NptWZ-hhs",
-              "7zeWdeAguwY", "XC6-JUd8QDI",
-              "c7dRntoS_UI", "rkCYJcYmavc",
-              "DnIc_5o0GsI", "4miQHp1fCpU", "gUEV2FRohvc",
-              "TJJ28nKJbA8", "3tjLlnqjnLM", "S7fglaeBkWw",
-              "ZRw_XWw7hrA", "PgLslAkGRgo", "EPULu1wVxJs",
-              "WFeTYp-rDSQ", "T3-RBtlVJck", 
-              "EGwCjoIYXIg", "hZitcwYFJqw",
-# casts_ids_2020_2 
-              "VYqYL8V2lD8", "UBm5DAEgNII",
-              "lyA_iusFGt0", "AwzdJ_O-Ji8",
-              "QIcgRApgjI4", "0yHW9d2qx3g",
-              "YxULWMbQAyg", "nLXM8z7XG7A",
-              "ZF22BOarorQ", "vVeSguyzXNE",
-              "GkiNQdelIkw", "yURmesQKeAk",
-              "gekVSFUrTfY", "BUscwechVXU",
-              "crEdhjqndB0", "qbMTpwgpZ0E",
-              "Pe8Dc42I4b4", "DcxpvJb6wZo",
-              "yInrbIvVPYE", "voOlv-B-Q9Y",
-              "fz_4tSiYDvU",
-              "ojuYAskQZbY", "2tr1pl4GQcA",
-              "OhBXywBd7Ac"
+# creating seed variables
+puts "Creating variables"
+
+points = "points"
+playoffs = "playoffs"
+promotion = "promotion series"
+
+s2019_1 = [
+  {
+    date: Date.new(2019,1,12),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "tGsGeGnV43o",
+    matches: [ 
+      {
+        match_url: "XQ0KshJ0Z8Y",
+        blue_team: fla,
+        red_team: kbm
+      }, 
+      {
+        match_url: "SItX0OFomlk",
+        blue_team: vk,
+        red_team: up
+      },
+      {
+        match_url: "nzYvhP6NLWg",
+        blue_team: itz,
+        red_team: cnb
+      },
+      {
+        match_url: "9F2WyiwDjzo",
+        blue_team: prg,
+        red_team: rdp
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,1,13),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "q5rp5Bz2UJ0",
+    matches: [
+      {
+        match_url: "MvDHyYtUjVg",
+        blue_team: up,
+        red_team: kbm
+      }, 
+      {
+        match_url: "V5DEa3H5cyY",
+        blue_team: vk,
+        red_team: cnb
+      },
+      {
+        match_url: "2A5iSBnl3sw",
+        blue_team: rdp,
+        red_team: itz
+      },
+      {
+        match_url: "18mo1ZekMJg",
+        blue_team: fla,
+        red_team: prg
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,1,19),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "si6ZeXANXxs",
+    matches: [
+      {
+        match_url: "VARmvWkb_5E",
+        blue_team: rdp,
+        red_team: cnb
+      }, 
+      {
+        match_url: "xy5womYBDE8",
+        blue_team: itz,
+        red_team: prg
+      },
+      {
+        match_url: "LHuLRdXOXy0",
+        blue_team: up,
+        red_team: fla
+      },
+      {
+        match_url: "EU4LbvD5Src",
+        blue_team: vk,
+        red_team: kbm
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,1,20),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "PSqifma3hIw",
+    matches: [
+      {
+        match_url: "WDzRCStOjZY",
+        blue_team: up,
+        red_team: prg
+      }, 
+      {
+        match_url: "-UBWW1S-JWM",
+        blue_team: rdp,
+        red_team: fla
+      },
+      {
+        match_url: "4TU7CX3LW8k",
+        blue_team: cnb,
+        red_team: kbm
+      },
+      {
+        match_url: "bHQU_xXvQ-s",
+        blue_team: vk,
+        red_team: itz
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,1,26),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "p10GM_k2zvc",
+    matches: [
+      {
+        match_url: "QFE7csj3WlI",
+        blue_team: vk,
+        red_team: prg
+      }, 
+      {
+        match_url: "8kVvodRqIN4",
+        blue_team: rdp,
+        red_team: kbm
+      },
+      {
+        match_url: "BGutdWZNT0A",
+        blue_team: fla,
+        red_team: itz
+      },
+      {
+        match_url: "0q3wjINcT54",
+        blue_team: cnb,
+        red_team: up
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,1,27),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "NFnwNkYrpT4",
+    matches: [
+      {
+        match_url: "hlOXxfVUHqc",
+        blue_team: itz,
+        red_team: kbm
+      }, 
+      {
+        match_url: "IRQXEPt15H8",
+        blue_team: cnb,
+        red_team: prg
+      },
+      {
+        match_url: "LTm0YOg0fq4",
+        blue_team: vk,
+        red_team: fla
+      },
+      {
+        match_url: "Z5_Z2PxJZn4",
+        blue_team: rdp,
+        red_team: up
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,2,2),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "NL0GPjs-4Ao",
+    matches: [
+      {
+        match_url: "WgcAHTUZN74",
+        blue_team: fla,
+        red_team: cnb
+      }, 
+      {
+        match_url: "VV7nFMzD70c",
+        blue_team: itz,
+        red_team: up
+      },
+      {
+        match_url: "rlgRU4BQf4o",
+        blue_team: prg,
+        red_team: kbm
+      },
+      {
+        match_url: "iGmNhvuGEf4",
+        blue_team: rdp,
+        red_team: vk
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,2,3),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "POeX9tvodSc",
+    matches: [
+      {
+        match_url: "LSIEgfORskE",
+        blue_team: kbm,
+        red_team: fla
+      }, 
+      {
+        match_url: "-8bbZZ1ZRZk",
+        blue_team: rdp,
+        red_team: prg
+      },
+      {
+        match_url: "R6cBhidPcgw",
+        blue_team: up,
+        red_team: vk
+      },
+      {
+        match_url: "L3CybUO90cs",
+        blue_team: cnb,
+        red_team: itz
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,2,9),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "pyN8tcBQ1mk",
+    matches: [
+      {
+        match_url: "MTOJU0OQOwc",
+        blue_team: itz,
+        red_team: rdp
+      }, 
+      {
+        match_url: "mR3FfynhMMI",
+        blue_team: cnb,
+        red_team: vk
+      },
+      {
+        match_url: "G1hdjGB5uVY",
+        blue_team: kbm,
+        red_team: up
+      },
+      {
+        match_url: "W3FBiFufid4",
+        blue_team: prg,
+        red_team:  fla
+      },
+    ] 
+  },
+  {
+    date: Date.new(2019,2,10),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "5av3YLvBpv4",
+    matches: [
+      {
+        match_url: "L6LIdHJH9Bk",
+        blue_team: prg,
+        red_team: itz
+      }, 
+      {
+        match_url: "hVL9uIVJAMY",
+        blue_team: kbm,
+        red_team: vk
+      },
+      {
+        match_url: "cRXBg7txDtI",
+        blue_team: fla,
+        red_team: up
+      },
+      {
+        match_url: "cRXBg7txDtI",
+        blue_team: cnb,
+        red_team: rdp
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,2,16),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "Pv_8q7d9VUQ",
+    matches: [
+      {
+        match_url: "Vc8IkxKXHj8",
+        blue_team: prg,
+        red_team: up
+      }, 
+      {
+        match_url: "qJMQRshY6Gg",
+        blue_team: kbm,
+        red_team: cnb
+      },
+      {
+        match_url: "UkbM9fJ7a0U",
+        blue_team: itz,
+        red_team: vk
+      },
+      {
+        match_url: "7Px1GPM0Kcg",
+        blue_team: fla,
+        red_team: rdp
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,2,17),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "8F47LxkjCMc",
+    matches: [
+      {
+        match_url: "fVhHllcJ7mA",
+        blue_team: kbm,
+        red_team: rdp
+      }, 
+      {
+        match_url: "DS8vZ1SZT9M",
+        blue_team: up,
+        red_team: cnb
+      },
+      {
+        match_url: "OEhpzOOfJ9s",
+        blue_team: prg,
+        red_team: vk
+      },
+      {
+        match_url: "XNg1qLmk1Qg",
+        blue_team: itz,
+        red_team: fla
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,2,23),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "Bq6Wl2U-yQ4",
+    matches: [
+      {
+        match_url: "GTXbJdsmyrk",
+        blue_team: vk,
+        red_team: fla
+      }, 
+      {
+        match_url: "xtwYXvaQuA0",
+        blue_team: up,
+        red_team: rdp
+      },
+      {
+        match_url: "raSvieL_Zlc",
+        blue_team: prg,
+        red_team: cnb
+      },
+      {
+        match_url: "zPkeAk84ccQ",
+        blue_team: kbm,
+        red_team: itz
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,2,24),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "phwSPTyqzJo",
+    matches: [
+      {
+        match_url: "1KUm1vA1QKk",
+        blue_team: vk,
+        red_team: rdp
+      }, 
+      {
+        match_url: "bBO9lrDIIg8",
+        blue_team: up,
+        red_team: itz
+      },
+      {
+        match_url: "-cCSryJgW1s",
+        blue_team: kbm,
+        red_team: prg
+      },
+      {
+        match_url: "GBKvvADTJkQ",
+        blue_team: cnb,
+        red_team: fla
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,3,8),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "NqMEiWk4DUY",
+    matches: [
+      {
+        match_url: "hJg7Q8zu2mM",
+        blue_team: prg,
+        red_team: rdp
+      }, 
+      {
+        match_url: "G-iVVI5QHNQ",
+        blue_team: vk,
+        red_team: up
+      },
+      {
+        match_url: "W6p5G8Woshg",
+        blue_team: cnb,
+        red_team: itz
+      },
+      {
+        match_url: "1Wd7pmo_4DQ",
+        blue_team: fla,
+        red_team: kbm
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,3,9),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "-kZDQ87gYTQ",
+    matches: [
+      {
+        match_url: "Mts4aIJd93w",
+        blue_team: vk,
+        red_team: cnb
+      }, 
+      {
+        match_url: "pPqDaMbDor0",
+        blue_team: fla,
+        red_team: prg
+      },
+      {
+        match_url: "PPdtDMJ8cS4",
+        blue_team: up,
+        red_team: kbm
+      },
+      {
+        match_url: "MUJF2Jua8xw",
+        blue_team: itz,
+        red_team: rdp
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,3,10),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "hHNHX9a3o4Y",
+    matches: [
+      {
+        match_url: "FHkehJwXwf4",
+        blue_team: fla,
+        red_team: up
+      }, 
+      {
+        match_url: "ra5dEqLdWiU",
+        blue_team: rdp,
+        red_team: cnb
+      },
+      {
+        match_url: "I1aqPoMCcSQ",
+        blue_team: kbm,
+        red_team: vk
+     },
+      {
+        match_url: "1c3k1wCwUPU",
+        blue_team: itz,
+        red_team: prg
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,3,16),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "w1kmkMFGPzo",
+    matches: [
+      {
+        match_url: "8rUT1Ekokqs",
+        blue_team: vk,
+        red_team: itz
+      }, 
+      {
+        match_url: "_PRq6vh33bg",
+        blue_team: cnb,
+        red_team: kbm
+      },
+      {
+        match_url: "ivrpupxTmD8",
+        blue_team: up,
+        red_team: prg
+     },
+      {
+        match_url: "xlZgHZOklyo",
+        blue_team: fla,
+        red_team: rdp
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,3,17),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "9Mma9Lk36V4",
+    matches: [
+      {
+        match_url: "-pv1AriVLmY",
+        blue_team: cnb,
+        red_team: up
+      }, 
+      {
+        match_url: "Pvp-NihjBeU",
+        blue_team: itz,
+        red_team: fla
+      },
+      {
+        match_url: "u7zDMqrWngI",
+        blue_team: kbm,
+        red_team: rdp
+      },
+      {
+        match_url: "PiBDoUgV9Pk",
+        blue_team: prg,
+        red_team: vk
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,3,23),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "NOaNywpkPWc",
+    matches: [
+      {
+        match_url: "_p8CUx673Jo",
+        blue_team: kbm,
+        red_team: itz
+      }, 
+      {
+        match_url: "2ibs7mCDpsk",
+        blue_team: rdp,
+        red_team: up
+      },
+      {
+        match_url: "NW0R_hR44i4",
+        blue_team: cnb,
+        red_team: prg
+      },
+      {
+        match_url: "w6X96moIo1w",
+        blue_team: vk,
+        red_team: fla
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,3,24),
+    stage: points,
+    tournament: cblol_2019_1.id,
+    cast_url: "Zf3gC5ANkbg",
+    matches: [
+      {
+        match_url: "EWc5PLPHbYs",
+        blue_team: prg,
+        red_team: kbm
+      }, 
+      {
+        match_url: "ae3gBx5Zy8A",
+        blue_team: rdp,
+        red_team: vk
+      },
+      {
+        match_url: "e7m-yuLTTHs",
+        blue_team: fla,
+        red_team: cnb
+      },
+      {
+        match_url: "79LNWzjW03Q",
+        blue_team: itz,
+        red_team: up
+      }
+    ]
+  },
+  {
+    date: Date.new(2019,4,6),
+    stage: playoffs,
+    tournament: cblol_2019_1.id,
+    cast_url: "lnyhNVUp28I",
+    matches: [
+      {
+        match_url: "Wn3cF9lCTv4",
+        blue_team: fla,
+        red_team: cnb
+      }, 
+      {
+        match_url: "egaR0loZLRs",
+        blue_team: cnb,
+        red_team: fla
+      },
+      {
+        match_url: "SKn46Rfp5GM",
+        blue_team: fla,
+        red_team: cnb
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,4,7),
+    stage: playoffs,
+    tournament: cblol_2019_1.id,
+    cast_url: "M7ylOFR-v98",
+    matches: [
+      {
+        match_url: "7rT_brmK6uo",
+        blue_team: itz,
+        red_team: rdp
+      }, 
+      {
+        match_url: "75S690YinvU",
+        blue_team: itz,
+        red_team: rdp
+      },
+      {
+        match_url: "rn3GzGQbIrI",
+        blue_team: itz,
+        red_team: rdp
+      },
+      {
+        match_url: "Pxsc9Acb_jI",
+        blue_team: itz,
+        red_team: rdp
+      },
+      {
+        match_url: "L8ZxpEWyQfk",
+        blue_team: rdp,
+        red_team: itz
+      }
+    ] 
+  },
+  {
+    date: Date.new(2019,4,13),
+    stage: playoffs,
+    tournament: cblol_2019_1.id,
+    cast_url: "hgJUToNgMhs",
+    matches: [
+      {
+        match_url: "43CX71jd9zY",
+        blue_team: fla,
+        red_team: itz
+      }, 
+      {
+        match_url: "Gh-EcKPswu0",
+        blue_team: fla,
+        red_team: itz
+      },
+      {
+        match_url: "xTpnmockzqk",
+        blue_team: fla,
+        red_team: itz
+      },
+      {
+        match_url: "UPWSd3hUYR0",
+        blue_team: fla,
+        red_team: itz
+      },
+      {
+        match_url: "c0HrDLrGWdE",
+        blue_team: fla,
+        red_team: itz
+      }
+    ]
+  },
+  {
+    date: Date.new(2019, 04, 27),
+    stage: promotion,
+    tournament: cblol_2019_1.id,
+    cast_url: "JFcu61p4Pw8",
+    matches: [
+      {
+        match_url: "pry8CNWXMnc",
+        blue_team: vk,
+        red_team: one
+      }, 
+      {
+        match_url: "iGF_NxkErGI",
+        blue_team: vk,
+        red_team: one
+      },
+      {
+        match_url: "y-WRCMcmPck",
+        blue_team: vk,
+        red_team: one
+      },
+      {
+        match_url: "i6v-Urg93mk",
+        blue_team: one,
+        red_team: vk
+      }
+    ]
+  }    
 ]
 
-seed_casts(casts_ids)
+# calling method for s2019 - split 1
+puts "calling method for s2019 - split 1"
 
-# seeding matches
-#     playlist_19_1 = "PLC6tQcehKF2Oq8caBG2AUQW3Vof4Pq8YC"
-#     playlist_19_2 = "PLC6tQcehKF2Pl9I5RrL6nxgH7WB_FDpEK"
-#     playlist_20_1 = "PLC6tQcehKF2Mowe-FmUHCx3ZxVxNW6wF7"
-#     playlist_20_2 = "PLC6tQcehKF2PHTyIN__dexPnzhjiLS-iu"
-
-#     # playlists_ids = [playlist_19_1, playlist_19_2, playlist_20_1, playlist_20_2]
-
-#     playlists_ids = [playlist_19_1]
-
-#     matches_ids = []
-
-#     playlists_ids.each do |id|
-#       response = HTTParty.get("https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{id}&key=#{ENV['YOUTUBE_KEY']}&part=contentDetails&maxResults=100")
-#       list = JSON.parse(response.body)
-
-#       list["items"].each do |video|
-#         matches_ids << video["contentDetails"]["videoId"]
-#       end
-#     end
-
-#     array = []
-
-#     matches_ids.each do |id|
-#       response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{id}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
-#       video = JSON.parse(response.body)
-      
-#       # year = video["items"].first["snippet"]["publishedAt"][0..3].to_i
-#       # month = video["items"].first["snippet"]["publishedAt"][5..6].to_i
-#       # day = video["items"].first["snippet"]["publishedAt"][8..9].to_i
-#       # date = Date.new(year, month, day)
-
-#       # duration = video["items"].first["contentDetails"]['duration']
-      
-#       array << video["items"].first["snippet"]["publishedAt"][0...10]
-#       # array << video["items"].first["snippet"]["tags"][-2]
-
-#       # Match.create! (match_url:
-#       #               match_date:
-#       #               match_time:
-#       #               match_view:
-#       #               match_like:
-#       #               match_dislike:
-#       #               match_comment:
-#       #               blue_team_id:
-#       #               red_team_id:
-#       #               cast_id:
-#       # )
-
-#     end
+seed_db(s2019_1)
