@@ -49,7 +49,7 @@ up = Team.create!(team_name: "uppercut",
 vk = Team.create!(team_name: "keyd",
       team_long_name: "vivo keyd",
       team_tag: "vk"
-      )      
+      )
 
 # seed for tournaments table
 puts 'Creating tournaments'
@@ -61,11 +61,11 @@ cblol_2019_1 = Tournament.create!(season: 2019,
 cblol_2019_2 = Tournament.create!(season: 2019,
                                   split: 2
 )
-                                  
+
 cblol_2020_1 = Tournament.create!(season: 2020,
                                   split: 1
 )
-                                  
+
 cblol_2020_2 = Tournament.create!(season: 2020,
                                   split: 2
 )
@@ -79,7 +79,7 @@ def seed_db(array)
                           round_date: hash[:date],
                           tournament_id: hash[:tournament]
             )
-    
+
     cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
     cast_video = JSON.parse(cast_response.body)
 
@@ -111,8 +111,8 @@ def seed_db(array)
                     red_team_id: match[:red_team].id,
                     cast_id: cast.id
       )
-    end  
-  end    
+    end
+  end
 end
 
 # creating seed variables
@@ -128,12 +128,12 @@ s2019_1 = [
     stage: points,
     tournament: cblol_2019_1.id,
     cast_url: "tGsGeGnV43o",
-    matches: [ 
+    matches: [
       {
         match_url: "XQ0KshJ0Z8Y",
         blue_team: fla,
         red_team: kbm
-      }, 
+      },
       {
         match_url: "SItX0OFomlk",
         blue_team: vk,
@@ -161,7 +161,7 @@ s2019_1 = [
         match_url: "MvDHyYtUjVg",
         blue_team: up,
         red_team: kbm
-      }, 
+      },
       {
         match_url: "V5DEa3H5cyY",
         blue_team: vk,
@@ -189,7 +189,7 @@ s2019_1 = [
         match_url: "VARmvWkb_5E",
         blue_team: rdp,
         red_team: cnb
-      }, 
+      },
       {
         match_url: "xy5womYBDE8",
         blue_team: itz,
@@ -217,7 +217,7 @@ s2019_1 = [
         match_url: "WDzRCStOjZY",
         blue_team: up,
         red_team: prg
-      }, 
+      },
       {
         match_url: "-UBWW1S-JWM",
         blue_team: rdp,
@@ -245,7 +245,7 @@ s2019_1 = [
         match_url: "QFE7csj3WlI",
         blue_team: vk,
         red_team: prg
-      }, 
+      },
       {
         match_url: "8kVvodRqIN4",
         blue_team: rdp,
@@ -273,7 +273,7 @@ s2019_1 = [
         match_url: "hlOXxfVUHqc",
         blue_team: itz,
         red_team: kbm
-      }, 
+      },
       {
         match_url: "IRQXEPt15H8",
         blue_team: cnb,
@@ -289,7 +289,7 @@ s2019_1 = [
         blue_team: rdp,
         red_team: up
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,2,2),
@@ -301,7 +301,7 @@ s2019_1 = [
         match_url: "WgcAHTUZN74",
         blue_team: fla,
         red_team: cnb
-      }, 
+      },
       {
         match_url: "VV7nFMzD70c",
         blue_team: itz,
@@ -329,7 +329,7 @@ s2019_1 = [
         match_url: "LSIEgfORskE",
         blue_team: kbm,
         red_team: fla
-      }, 
+      },
       {
         match_url: "-8bbZZ1ZRZk",
         blue_team: rdp,
@@ -345,7 +345,7 @@ s2019_1 = [
         blue_team: cnb,
         red_team: itz
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,2,9),
@@ -357,7 +357,7 @@ s2019_1 = [
         match_url: "MTOJU0OQOwc",
         blue_team: itz,
         red_team: rdp
-      }, 
+      },
       {
         match_url: "mR3FfynhMMI",
         blue_team: cnb,
@@ -373,7 +373,7 @@ s2019_1 = [
         blue_team: prg,
         red_team:  fla
       },
-    ] 
+    ]
   },
   {
     date: Date.new(2019,2,10),
@@ -385,7 +385,7 @@ s2019_1 = [
         match_url: "L6LIdHJH9Bk",
         blue_team: prg,
         red_team: itz
-      }, 
+      },
       {
         match_url: "hVL9uIVJAMY",
         blue_team: kbm,
@@ -401,7 +401,7 @@ s2019_1 = [
         blue_team: cnb,
         red_team: rdp
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,2,16),
@@ -413,7 +413,7 @@ s2019_1 = [
         match_url: "Vc8IkxKXHj8",
         blue_team: prg,
         red_team: up
-      }, 
+      },
       {
         match_url: "qJMQRshY6Gg",
         blue_team: kbm,
@@ -441,7 +441,7 @@ s2019_1 = [
         match_url: "fVhHllcJ7mA",
         blue_team: kbm,
         red_team: rdp
-      }, 
+      },
       {
         match_url: "DS8vZ1SZT9M",
         blue_team: up,
@@ -469,7 +469,7 @@ s2019_1 = [
         match_url: "GTXbJdsmyrk",
         blue_team: vk,
         red_team: fla
-      }, 
+      },
       {
         match_url: "xtwYXvaQuA0",
         blue_team: up,
@@ -497,7 +497,7 @@ s2019_1 = [
         match_url: "1KUm1vA1QKk",
         blue_team: vk,
         red_team: rdp
-      }, 
+      },
       {
         match_url: "bBO9lrDIIg8",
         blue_team: up,
@@ -513,7 +513,7 @@ s2019_1 = [
         blue_team: cnb,
         red_team: fla
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,3,8),
@@ -525,7 +525,7 @@ s2019_1 = [
         match_url: "hJg7Q8zu2mM",
         blue_team: prg,
         red_team: rdp
-      }, 
+      },
       {
         match_url: "G-iVVI5QHNQ",
         blue_team: vk,
@@ -553,7 +553,7 @@ s2019_1 = [
         match_url: "Mts4aIJd93w",
         blue_team: vk,
         red_team: cnb
-      }, 
+      },
       {
         match_url: "pPqDaMbDor0",
         blue_team: fla,
@@ -569,7 +569,7 @@ s2019_1 = [
         blue_team: itz,
         red_team: rdp
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,3,10),
@@ -581,7 +581,7 @@ s2019_1 = [
         match_url: "FHkehJwXwf4",
         blue_team: fla,
         red_team: up
-      }, 
+      },
       {
         match_url: "ra5dEqLdWiU",
         blue_team: rdp,
@@ -609,7 +609,7 @@ s2019_1 = [
         match_url: "8rUT1Ekokqs",
         blue_team: vk,
         red_team: itz
-      }, 
+      },
       {
         match_url: "_PRq6vh33bg",
         blue_team: cnb,
@@ -637,7 +637,7 @@ s2019_1 = [
         match_url: "-pv1AriVLmY",
         blue_team: cnb,
         red_team: up
-      }, 
+      },
       {
         match_url: "Pvp-NihjBeU",
         blue_team: itz,
@@ -653,7 +653,7 @@ s2019_1 = [
         blue_team: prg,
         red_team: vk
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,3,23),
@@ -665,7 +665,7 @@ s2019_1 = [
         match_url: "_p8CUx673Jo",
         blue_team: kbm,
         red_team: itz
-      }, 
+      },
       {
         match_url: "2ibs7mCDpsk",
         blue_team: rdp,
@@ -681,7 +681,7 @@ s2019_1 = [
         blue_team: vk,
         red_team: fla
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,3,24),
@@ -693,7 +693,7 @@ s2019_1 = [
         match_url: "EWc5PLPHbYs",
         blue_team: prg,
         red_team: kbm
-      }, 
+      },
       {
         match_url: "ae3gBx5Zy8A",
         blue_team: rdp,
@@ -721,7 +721,7 @@ s2019_1 = [
         match_url: "Wn3cF9lCTv4",
         blue_team: fla,
         red_team: cnb
-      }, 
+      },
       {
         match_url: "egaR0loZLRs",
         blue_team: cnb,
@@ -732,7 +732,7 @@ s2019_1 = [
         blue_team: fla,
         red_team: cnb
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,4,7),
@@ -744,7 +744,7 @@ s2019_1 = [
         match_url: "7rT_brmK6uo",
         blue_team: itz,
         red_team: rdp
-      }, 
+      },
       {
         match_url: "75S690YinvU",
         blue_team: itz,
@@ -765,7 +765,7 @@ s2019_1 = [
         blue_team: rdp,
         red_team: itz
       }
-    ] 
+    ]
   },
   {
     date: Date.new(2019,4,13),
@@ -777,7 +777,7 @@ s2019_1 = [
         match_url: "43CX71jd9zY",
         blue_team: fla,
         red_team: itz
-      }, 
+      },
       {
         match_url: "Gh-EcKPswu0",
         blue_team: fla,
@@ -810,7 +810,7 @@ s2019_1 = [
         match_url: "pry8CNWXMnc",
         blue_team: vk,
         red_team: one
-      }, 
+      },
       {
         match_url: "iGF_NxkErGI",
         blue_team: vk,
@@ -827,7 +827,7 @@ s2019_1 = [
         red_team: vk
       }
     ]
-  }    
+  }
 ]
 
 # calling method for s2019 - split 1
