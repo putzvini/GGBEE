@@ -1,16 +1,23 @@
-.carousel_card {
+.carousel_card > div {
   display: flex;
-  width: 100px;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   text-align: center;
 }
+
 
 .team-logo-img {
   height: 100px;
   object-fit: cover;
 }
 
-.team-name p {
+.team-name a {
   line-height: 1.4;
   font-weight: 300;
   text-align: center;
+}
+
+.team-logo-big {
+  height: 300px;
 }

@@ -5,8 +5,10 @@
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
         <div class="carousel_card">
-          <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
-          <%= link_to team.team_name.capitalize, team_path(team), class: "team-name"%>
+          <div>
+            <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+            <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
+          </div>
         </div>
       <% end %>
     </div>
@@ -14,7 +16,7 @@
   <br>
   <div class="row">
     <div class="col-8">
-      <h1><%= @team.team_long_name.capitalize %></h1>
+      <h1><%= @team.team_name.titleize %></h1>
       <p>Data collected from casting videos on YouTube</p>
       <br>
       <div class="info_cards_grid">
@@ -45,7 +47,7 @@
       </div>
     </div>
     <div class="col-4">
-      <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-img" %>
+      <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
   </div>
 
@@ -58,7 +60,7 @@
 
   <div id="last-5-audiences-chart">
     <h2>Last 5 matches audiences</h2>
-    <%= @last_5 %>
+    <%= bar_chart @last_5 %>
     <%= image_tag 'chart_example.png', style: "width: 1000px"%>
   </div>
 
@@ -66,23 +68,26 @@
 
   <div id="top-audience-table">
     <h2>Top 5 Audiences</h2>
-    <%= @top_5 %>
     <table class="table">
         <thead>
           <tr>
             <th>Tournament</th>
-            <th>Teams</th>
+            <th>Team A</th>
+            <th>Team B</th>
             <th>Views</th>
             <th>Date</th>
           </tr>
         </thead>
         <tbody>
+          <% @top_5.each do |i|  %>
           <tr>
-            <td>CBLOL 2020 - Split 1</td>
-            <td>Team 1 x Team 2</td>
-            <td>241.650</td>
-            <td>09.04.20</td>
+            <td><%= i[:tournament]  %></td>
+            <td><%= i[:team_blue] %></td>
+            <td><%= i[:team_red] %></td>
+            <td><%= i[:views] %></td>
+            <td><%= i[:date] %></td>
           </tr>
+          <% end  %>
         </tbody>
       </table>
   </div>
