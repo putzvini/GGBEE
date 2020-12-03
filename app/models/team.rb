@@ -1,11 +1,11 @@
 class Team < ApplicationRecord
-  validates :team_name, :team_long_name, :team_tag, presence: true 
+  validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
 def top_avg_chart(data)
   response = {}
   Team.all.each do |team|
-    response[team.team_long_name] = 0
+    response[team.team_name.capitalize] = 0
     b = Match.select(data).where(blue_team_id: team.id)
     b_count = b.count
     b_sum = 0
@@ -18,16 +18,17 @@ def top_avg_chart(data)
     r.each do |relation|
       r_sum += relation[data]
     end
-    response[team.team_long_name] += ((b_sum + r_sum)/(b_count + r_count)).round
+    response[team.team_name.capitalize] += ((b_sum + r_sum)/(b_count + r_count)).round
   end
   response
 end
+
 def banner_infos(id)
   response = {}
   team = Team.find(id)
-  
+
   matches = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).count
-  
+
   response[:matches] = matches
   response[:views] = calc_x(:match_view, id)
   response[:views_match] = (response[:views] / matches).round
@@ -40,8 +41,8 @@ end
 def last_5(id)
   response = {}
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
-  
-  var.each do |match|  
+
+  var.each do |match|
     date = match.match_date.to_formatted_s(:rfc822)
     response[date] = match.match_view
   end
@@ -51,7 +52,7 @@ end
 def top_5(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_view}.last(5)
-  
+
   var.each do |match|
     cast = Cast.find(match.cast_id)
     round = Round.find(cast.round_id)
@@ -73,7 +74,7 @@ def calc_x(data, id)
   sum = 0
   arg = Match.select(data).where(red_team_id: id).or(Match.select(data).where(blue_team_id: id))
   arg.each do |a|
-    sum += a[data] 
+    sum += a[data]
   end
   sum
 end
