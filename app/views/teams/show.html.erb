@@ -4,8 +4,8 @@
     <br>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
-        <div class="carousel_card"> 
-          <%= image_tag 'furia-logo.png', class: "team-logo-img" %>
+        <div class="carousel_card">
+          <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
           <%= link_to team.team_name.capitalize, team_path(team), class: "team-name"%>
         </div>
       <% end %>
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="col-4">
-      <%= image_tag 'cruzeiro-logo.png', class: "cup-img" %>
+      <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-img" %>
     </div>
   </div>
 
