@@ -1,3 +1,32 @@
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner.jpg' %>); background-size: cover ">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center" style="margin-top:60px">
+                        <div class="col-md-8 col-12 order-md-1 order-2">
+                            <h4 id="presentation">A <strong style="color:#72BFC9">GGBee</strong> conecta você com as principais métricas de stream do CBLOL.</h4>
+                            <p id="presentation2">Saiba tudo sobre o campeonato nacional de e-sports mais assistido do Brasil. </p> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1732&q=80)">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center" style="margin-top:60px">
+                        <div class="col-md-8 col-12 order-md-1 order-2">
+                            <h4>Quais <strong style="color:#72BFC9">times</strong> geram mais engajamento?</h4>
+                            <p>A partir de dados do YouTube, você poderá comparar time a time, quais têm mais engajamento nos streams do CBLOL.</p> <br> <%= link_to 'VER AGORA', teams_path %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+</div>
+
 <div class="container p-4">
 
   <div class="row">
@@ -26,7 +55,7 @@
       </table>
     </div>
     <div class="col-4">
-      <%= image_tag 'taca_cblol.jpg', class: "cup-img" %>
+      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
     </div>
   </div>
   <br>

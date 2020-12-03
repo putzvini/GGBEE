@@ -20,7 +20,7 @@ def top_avg_chart(data)
     end
     response[team.team_name.capitalize] += ((b_sum + r_sum)/(b_count + r_count)).round
   end
-  response
+  response.sort_by { |k, v| v }.reverse
 end
 
 def banner_infos(id)
@@ -65,7 +65,7 @@ def top_5(id)
       date: match.match_date,
     }
   end
-  response
+  response.sort_by { |e| e[:views] }.reverse
 end
 
 private
