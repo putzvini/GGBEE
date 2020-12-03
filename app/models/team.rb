@@ -22,7 +22,8 @@ def top_avg_chart(data)
   end
   response
 end
-def banner_infos(id)
+
+def banner_infos_team(id)
   response = {}
   team = Team.find(id)
   
