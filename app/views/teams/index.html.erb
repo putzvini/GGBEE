@@ -17,8 +17,7 @@
   <div id="top-audience-teams">
     <h2>Top audience teams</h2>
     <p><strong>average per game</strong></p>
-    <%# <%= image_tag 'chart_example.png', style: "width: 1000px"%>
-    <%= line_chart @top_audience_avg %>
+    <%= line_chart @top_audience_avg, thousands: "," %>
   </div>
 
   <br>
@@ -26,8 +25,7 @@
   <div id="top-like-teams">
     <h2>Top like teams</h2>
     <p><strong>average per game</strong></p>
-    <%# <%= image_tag 'chart_example.png', style: "width: 1000px"%>
-    <%= bar_chart @top_likes_avg %>
+    <%= bar_chart @top_likes_avg, thousands: "," %>
   </div>
 
   <br>
@@ -35,8 +33,7 @@
   <div id="top-comment-teams">
     <h2>Top comment teams</h2>
     <p><strong>average per game</strong></p>
-    <%# <%= image_tag 'chart_example.png', style: "width: 1000px"%>
-    <%= bar_chart @top_comment_avg %>
+    <%= bar_chart @top_comment_avg, thousands: "," %>
   </div>
 
   <br>

@@ -61,7 +61,6 @@
   <div id="last-5-audiences-chart">
     <h2>Last 5 matches audiences</h2>
     <%= bar_chart @last_5 %>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
   </div>
 
   <br>
@@ -81,9 +80,9 @@
         <tbody>
           <% @top_5.each do |i|  %>
           <tr>
-            <td><%= i[:tournament]  %></td>
-            <td><%= i[:team_blue] %></td>
-            <td><%= i[:team_red] %></td>
+            <td><%= i[:tournament] %></td>
+            <td><%= i[:team_blue].capitalize %></td>
+            <td><%= i[:team_red].capitalize %></td>
             <td><%= i[:views] %></td>
             <td><%= i[:date] %></td>
           </tr>
