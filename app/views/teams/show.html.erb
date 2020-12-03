@@ -51,11 +51,6 @@
     </div>
   </div>
 
-  <div id="total-audience-split-chart">
-    <h2>Total audience by split</h2>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
-  </div>
-
   <br>
 
   <div id="last-5-audiences-chart">
@@ -67,12 +62,11 @@
 
   <div id="top-audience-table">
     <h2>Top 5 Audiences</h2>
-    <table class="table">
+    <table class="table" style="text-align: center">
         <thead>
           <tr>
             <th>Tournament</th>
-            <th>Team A</th>
-            <th>Team B</th>
+            <th colspan="3">Teams</th>
             <th>Views</th>
             <th>Date</th>
           </tr>
@@ -82,6 +76,7 @@
           <tr>
             <td><%= i[:tournament] %></td>
             <td><%= i[:team_blue].capitalize %></td>
+            <td>vs.</td>
             <td><%= i[:team_red].capitalize %></td>
             <td><%= i[:views] %></td>
             <td><%= i[:date] %></td>
