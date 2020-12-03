@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
   def show
     @teams = Team.all
     @team = Team.find(params[:id])
-    @banner = banner_infos(params[:id])
+    @banner = banner_infos_team(params[:id])
     @last_5 = last_5(params[:id])
     @top_5 = top_5(params[:id])
   end

@@ -23,7 +23,7 @@ def top_avg_chart(data)
   response.sort_by { |k, v| v }.reverse
 end
 
-def banner_infos(id)
+def banner_infos_team(id)
   response = {}
   team = Team.find(id)
 
