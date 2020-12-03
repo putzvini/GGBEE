@@ -37,6 +37,36 @@ def banner_infos(id)
   response
 end
 
+def last_5(id)
+  response = {}
+  var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
+  
+  var.each do |match|  
+    date = match.match_date.to_formatted_s(:rfc822)
+    response[date] = match.match_view
+  end
+  response
+end
+
+def top_5(id)
+  response = []
+  var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_view}.last(5)
+  
+  var.each do |match|
+    cast = Cast.find(match.cast_id)
+    round = Round.find(cast.round_id)
+    tournament = Tournament.find(round.tournament_id)
+    response << {
+      tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
+      team_blue: Team.find(match.blue_team_id).team_name,
+      team_red: Team.find(match.red_team_id).team_name,
+      views: match.match_like,
+      date: match.match_date,
+    }
+  end
+  response
+end
+
 private
 
 def calc_x(data, id)
