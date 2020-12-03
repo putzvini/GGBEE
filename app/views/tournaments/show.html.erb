@@ -2,22 +2,20 @@
 
   <div class="row">
 
-    <div id="split-carousel">
-      <h4>Past Split</h4>
-      <br>
-      <div class="split_carousel_cards_grid">
-        <% @tournaments.each do |tournament| %>
-        <div class="card">
-          <div class="split_card">
-            <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-          </div>
+  <div id="split-carousel">
+    <h4>Past Splits</h4>
+    <br>
+    <div class="split_carousel_cards_grid">
+      <% @tournaments.each do |tournament| %>
+        <div class="carousel_card pl-3" >
           <div>
-             <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
+            <%= image_tag 'logo_cblol.png', class: "team-logo-img" %>
+            <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
           </div>
         </div>
-      <% end %>
-      </div>
+    <% end %>
     </div>
+  </div>
 
     <br>
 
@@ -53,7 +51,7 @@
       </div>
     </div>
     <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
+      <%= image_tag 'logo_cblol.png', class: "cup-img" %>
     </div>
   </div>
 

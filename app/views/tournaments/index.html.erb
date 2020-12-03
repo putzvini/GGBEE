@@ -28,9 +28,7 @@
 </div>
 
 <div class="container p-4">
-
   <div class="row">
-
     <div class="col-8">
       <h1>CBLOL 2021</h1>
       <p><strong>EVENT: </strong>Riot's Official LOL Brazilian Championship</p>
@@ -61,19 +59,19 @@
 
   <br>
 
+<h1><%= @banner_infos %></h1>
+
   <div id="split-carousel">
-    <h4>Past Split</h4>
+    <h4>Past Splits</h4>
     <br>
     <div class="split_carousel_cards_grid">
       <% @tournaments.each do |tournament| %>
-      <div class="card">
-        <div class="split_card" >
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
+        <div class="carousel_card pl-3" >
+          <div>
+            <%= image_tag 'logo_cblol.png', class: "team-logo-img" %>
+            <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
+          </div>
         </div>
-        <div>
-           <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
-        </div>
-      </div>
     <% end %>
     </div>
   </div>
@@ -88,57 +86,26 @@
 
   <br>
 
-  <div id="team-carousel">
+    <div id="team-carousel">
     <h4>Participating teams</h4>
     <br>
     <div class="teams-carrousel">
-      <div class="carousel_card">
-          <%= image_tag 'cru-logo.png', class: "team-logo-img" %>
-          <p class="team-name">Cruzeiro</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'falkol-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Falkol Prodigy</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'fla-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Flamengo</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'fur-logo.png', class: "team-logo-img" %>
-        <p class="team-name">FURIA</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'itz-logo.png', class: "team-logo-img" %>
-        <p class="team-name">INTZ</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'kbm-logo.png', class: "team-logo-img" %>
-        <p class="team-name">KaBuM</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'loud-logo.png', class: "team-logo-img" %>
-        <p class="team-name">LOUD</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'png-logo.png', class: "team-logo-img" %>
-        <p class="team-name">paiN Gaming</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'redcanids-logo.png', class: "team-logo-img" %>
-        <p class="team-name">RED Canids Kalunga</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'rensga-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Rensga</p>
-      </div>
+      <% @teams.each do |team| %>
+        <div class="carousel_card">
+          <div>
+            <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+            <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+
   <br>
   <div id="avg-casting-chart">
     <h2>Avg. Casting Time</h2>
     <p><strong>Viwers per Date</strong></p>
-    <%= pie_chart @avg_time, thousands: ",", colors: ["#72BFC9", "white"]  %>
+    <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
   </div>
   <br>
 </div>
