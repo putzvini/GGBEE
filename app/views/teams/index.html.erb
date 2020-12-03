@@ -7,7 +7,7 @@
         <div class="carousel_card">
           <div>
           <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
-          <%= link_to team.team_name.capitalize, team_path(team), class: "team-name"%>
+          <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
       <% end %>
@@ -15,24 +15,24 @@
   </div>
   <br>
   <div id="top-audience-teams">
-    <h2>Top audience teams</h2>
-    <p><strong>average per game</strong></p>
+    <h2>Top Teams in Avg. Audience</h2>
+    <p><strong>Avg. viwers per game, seasons 2019 and 2020</strong></p>
     <%= line_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
   <div id="top-like-teams">
-    <h2>Top like teams</h2>
-    <p><strong>average per game</strong></p>
+    <h2>Top Teams in Video Likes</h2>
+    <p><strong>Avg. YouTube likes per game, seasons 2019 and 2020</strong></p>
     <%= bar_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
   <div id="top-comment-teams">
-    <h2>Top comment teams</h2>
-    <p><strong>average per game</strong></p>
+    <h2>Top Teams in Video Comments</h2>
+    <p><strong>Avg. YouTube comments per game, seasons 2019 and 2020</strong></p>
     <%= bar_chart @top_comment_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 

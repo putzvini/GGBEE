@@ -7,6 +7,8 @@ class TournamentsController < ApplicationController
   end
 
   def show
+    @tournaments = Tournament.all
+    @tournament = Tournament.find(params[:id])
     @banner = banner_infos_split(params[:id])
     @top_5_casts = top_5_casts(params[:id])
     @top_5_matches = top_5_matches(params[:id])

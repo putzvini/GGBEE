@@ -5,7 +5,7 @@ end
 def top_avg_chart(data)
   response = {}
   Team.all.each do |team|
-    response[team.team_name.capitalize] = 0
+    response[team.team_name.titleize] = 0
     b = Match.select(data).where(blue_team_id: team.id)
     b_count = b.count
     b_sum = 0
@@ -18,7 +18,7 @@ def top_avg_chart(data)
     r.each do |relation|
       r_sum += relation[data]
     end
-    response[team.team_name.capitalize] += ((b_sum + r_sum)/(b_count + r_count)).round
+    response[team.team_name.titleize] += ((b_sum + r_sum)/(b_count + r_count)).round
   end
   response.sort_by { |k, v| v }.reverse
 end

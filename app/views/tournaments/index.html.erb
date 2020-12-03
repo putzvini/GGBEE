@@ -58,52 +58,32 @@
       <%= image_tag 'cblol_cup.png', class: "cup-img" %>
     </div>
   </div>
+
   <br>
+
   <div id="split-carousel">
     <h4>Past Split</h4>
     <br>
     <div class="split_carousel_cards_grid">
+      <% @tournaments.each do |tournament| %>
       <div class="card">
-        <div class="split_card">
+        <div class="split_card" >
           <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
         </div>
         <div>
-          <p class="split-name">2019 - Split 1</p>
+           <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
         </div>
       </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2019 - Split 2</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2020 - Split 1</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2020 - Split 2</p>
-        </div>
-      </div>
+    <% end %>
     </div>
   </div>
 
   <br>
 
   <div id="audience-chart">
-    <h2>Audience</h2>
-    <%= line_chart @audience %>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
+    <h2>CBLOL Daily Historical Audience - 2019 to 2020</h2>
+    <p><strong>Viewers per Date</strong></p>
+    <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
   </div>
 
   <br>
@@ -156,8 +136,9 @@
   </div>
   <br>
   <div id="avg-casting-chart">
-    <h2>Average casting time</h2>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
+    <h2>Avg. Casting Time</h2>
+    <p><strong>Viwers per Date</strong></p>
+    <%= pie_chart @avg_time, thousands: ",", colors: ["#72BFC9", "white"]  %>
   </div>
   <br>
 </div>
