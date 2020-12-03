@@ -2,7 +2,6 @@
   margin-bottom: 10px;
 }
 
-
 .carousel_card > div {
   display: flex;
   flex-direction: column;
@@ -29,4 +28,21 @@
 
 .team-logo-big {
   height: 300px;
+  margin-left: 75px;
+}
+
+.tns-controls {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tns-controls [aria-controls] {
+  font-size: 15px;
+  margin: 0 5px;
+  padding: 0 1em;
+  height: 2em;
+  color: #000;
+  background: #72BFC9;
+  border-radius: 3px;
+  border: 0;
 }
