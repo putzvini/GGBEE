@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   def index
     @tournaments = Tournament.all
+    @teams = Team.all
     @audience = audience
     @banner_infos = banner_infos_tournaments
     @donut = avg_time
