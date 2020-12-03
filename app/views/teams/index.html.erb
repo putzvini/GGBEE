@@ -17,7 +17,7 @@
   <div id="top-audience-teams">
     <h2>Top audience teams</h2>
     <p><strong>average per game</strong></p>
-    <%= line_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <%= line_chart (@top_audience_avg, []), thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
@@ -35,6 +35,20 @@
     <p><strong>average per game</strong></p>
     <%= bar_chart @top_comment_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
+
+  <%= timeline [
+  ["Washington", "1789-04-29", "1797-03-03"],
+  ["Adams", "1797-03-03", "1801-03-03"],
+  ["Jefferson", "1801-03-03", "1809-03-03"] ] %>
+
+  <pre><code>
+    Name, cat-A,cat-B , cat-C
+    Jan, 1, 2, 3
+    Feb, 4, 5, 6
+    Mar, 7, 8, 9
+  </code></pre>
+  <p><code>(@line)</code></p>
+
 
   <br>
 

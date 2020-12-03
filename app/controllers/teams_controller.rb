@@ -1,9 +1,9 @@
 class TeamsController < ApplicationController
-
+  def index
+    @teams = Team.all
     @top_audience_avg = top_avg_chart(:match_view)
     @top_likes_avg = top_avg_chart(:match_like)
     @top_comment_avg = top_avg_chart(:match_comment)
-
   end
 
   def show

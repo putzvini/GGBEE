@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
   validates :team_name, :team_long_name, :team_tag, presence: true
-<<<<<<< HEAD
+end
 
 def top_avg_chart(data)
   response = {}
@@ -20,7 +20,7 @@ def top_avg_chart(data)
     end
     response[team.team_name.capitalize] += ((b_sum + r_sum)/(b_count + r_count)).round
   end
-  response
+  response.sort_by { |k, v| v }.reverse
 end
 
 def banner_infos(id)
@@ -65,17 +65,16 @@ def top_5(id)
       date: match.match_date,
     }
   end
-  response
+  response.sort_by { |e| e[:views] }.reverse
 end
 
 private
 
 def calc_x(data, id)
-    sum = 0
-    arg = Match.select(data).where(red_team_id: id).or(Match.select(data).where(blue_team_id: id))
-    arg.each do |a|
-      sum += a[data]
-    end
-  sum
+  sum = 0
+  arg = Match.select(data).where(red_team_id: id).or(Match.select(data).where(blue_team_id: id))
+  arg.each do |a|
+    sum += a[data]
   end
+  sum
 end
