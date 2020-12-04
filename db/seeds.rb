@@ -190,6 +190,8 @@ def seed_db(array)
                           round_date: hash[:date],
                           tournament_id: hash[:tournament]
             )
+    
+    puts "Round #{round.id} created"
 
     cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
     cast_video = JSON.parse(cast_response.body)
@@ -205,6 +207,9 @@ def seed_db(array)
                         cast_comment: cast_video["items"].first["statistics"]["commentCount"].to_i,
                         round_id: round.id
            )
+
+    puts "Cast date #{cast.cast_date} created"
+
     hash[:matches].each do |match|
       match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
       match_video = JSON.parse(match_response.body)
@@ -222,6 +227,7 @@ def seed_db(array)
                     red_team_id: match[:red_team].id,
                     cast_id: cast.id
       )
+      puts "Match created!"
     end
   end
 end
