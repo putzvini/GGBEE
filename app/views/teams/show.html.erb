@@ -63,7 +63,7 @@
 
   <div id="top-audience-table">
     <h2>Top 5 Audiences</h2>
-    <table class="table" style="text-align: center">
+    <table class="table" style="text-align: center; vertical-align: middle">
         <thead>
           <tr>
             <th>Tournament</th>
@@ -75,12 +75,12 @@
         <tbody>
           <% @top_5.each do |match|  %>
           <tr>
-            <td><%= match[:tournament] %></td>
+            <td style="vertical-align: middle"><%= match[:tournament] %></td>
+            <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-img"%></td>
             <td><%= match[:team_blue].team_name.capitalize %></td>
-              <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-img"%></td>
             <td>vs.</td>
             <td><%= match[:team_red].team_name.capitalize %></td>
-              <td><%= image_tag "#{match[:team_red].team_tag}-logo.png", class: "team-logo-img"%></td>
+            <td><%= image_tag "#{match[:team_red].team_tag}-logo.png", class: "team-logo-img"%></td>
             <td><%= number_with_delimiter(match[:views]) %></td>
             <td><%= match[:date] %></td>
           </tr>

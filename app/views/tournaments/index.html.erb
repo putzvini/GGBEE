@@ -28,7 +28,7 @@
 </div>
 
 <div class="container p-4">
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-8">
       <h1><strong>LoL competitive scene in Brazil</strong></h1>
       <p><strong>GGBee </strong>analyzes CBLoL data  from YouTube since 2019</p>
@@ -64,78 +64,68 @@
       <%= image_tag 'cblol_cup.png', class: "cup-img" %>
     </div>
   </div>
-
   <div class="container p-4">
-  <div class="row">
-    <h1>Past splits</h1>
-    <br>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Tournament</th>
-          <th>Dates</th>
-          <th>Rounds</th>
-          <th>Champion</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @past_splits.each do |split| %>
+    <div class="row mb-5">
+      <h1>Past splits</h1>
+      <br>
+      <table class="table" style="text-align: center">
+        <thead>
           <tr>
-            <td><%= split[:tournament] %></td>
-            <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
-            <td><%= split[:rounds] %> </td>
-            <td> <%= split[:champion] %> </td>
-            <td> <%=  link_to "More", tournament_path(split[:t_id]) %></td>
+            <th>Tournament</th>
+            <th>Dates</th>
+            <th>Rounds</th>
+            <th>Champion</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <br>
-
-  <div id="audience-chart">
-    <h2>CBLoL historical audience</h2>
-    <p><strong>Round by round since season 2019</strong></p>
-    <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
-  </div>
-
-  <br>
-
-  <div id="team-carousel">
-    <h4>Participating teams</h4>
-    <br>
-    <div class="teams-carrousel">
-      <% @teams.each do |team| %>
-        <div class="carousel_card">
-          <div>
-            <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
-            <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
-          </div>
-        </div>
-      <% end %>
+        </thead>
+        <tbody>
+          <% @past_splits.each do |split| %>
+            <tr>
+              <td><%= split[:tournament] %></td>
+              <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
+              <td><%= split[:rounds] %> </td>
+              <td> <%= split[:champion] %> </td>
+              <td> <%=  link_to "Click here for More", tournament_path(split[:t_id]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  </div>
-
   <br>
-  
-  <div class="container p-4">
+    <div class="mb-5" id="audience-chart">
+      <h2>CBLoL historical audience</h2>
+      <p><strong>Round by round since season 2019</strong></p>
+      <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
+    </div>
+    <br>
+    <div class="mb-5" id="team-carousel">
+      <h4>Participating teams</h4>
+      <br>
+      <div class="teams-carrousel">
+        <% @teams.each do |team| %>
+          <div class="carousel_card">
+            <div>
+              <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+              <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
     <h2>Avg. casting time</h2>
     <p><strong>Viwers per Date</strong></p>
     <div class="row">
       <div class="col-4 text-center">
         <%= image_tag 'heroes/yasuo.png' %>
       </div>
-  
       <div class="col-8 text-center">
         <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
         <p>Cast time by subject (in minutes)</p>
         <div id="avg-casting-chart">
-          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>  
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
         </div>
       </div>
     </div>
   </div>
-  <br>
 </div>
