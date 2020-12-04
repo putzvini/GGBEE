@@ -76,20 +76,22 @@
     <table class="table" style="text-align: center">
         <thead>
           <tr>
-            <th colspan="3">Match</th>
+            <th colspan="5">Match</th>
             <th>Views</th>
             <th>Date</th>
           </tr>
         </thead>
         <tbody>
-          <% @top_5_matches.each do |i| %>
-          <tr>
-            <td><%= i[:team_blue].capitalize %></td>
-            <td>vs.</td>
-            <td><%= i[:team_red].capitalize %></td>
-            <td><%= number_with_delimiter(i[:views]) %></td>
-            <td><%= i[:date] %></td>
-          </tr>
+          <% @top_5_matches.each do |match| %>
+            <tr>
+              <td><%= match[:team_blue].team_name.capitalize %></td>
+              <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-img"%></td>
+              <td>vs</td>
+              <td><%= image_tag "#{match[:team_red].team_tag}-logo.png", class: "team-logo-img"%></td>
+              <td><%= match[:team_red].team_name.capitalize %></td>
+              <td><%= number_with_delimiter(match[:views]) %></td>
+              <td><%= match[:date] %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
