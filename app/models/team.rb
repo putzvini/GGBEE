@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :players
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
@@ -61,11 +62,15 @@ def top_5(id)
       tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
       team_blue: Team.find(match.blue_team_id),
       team_red: Team.find(match.red_team_id),
-      views: match.match_like,
+      views: match.match_view,
       date: match.match_date,
     }
   end
   response.sort_by { |e| e[:views] }.reverse
+end
+
+def players(id)
+  response = Player.where(team_id: id)
 end
 
 private
