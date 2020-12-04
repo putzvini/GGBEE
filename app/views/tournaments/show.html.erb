@@ -2,7 +2,7 @@
 
   <div class="row">
 
-  <div id="split-carousel">
+  <div class="mb-5" id="split-carousel">
     <h4>Past Splits</h4>
     <br>
     <div class="split_carousel_cards_grid">
@@ -19,7 +19,7 @@
 
     <br>
 
-    <div class="col-8">
+    <div class="col-8 mb-5">
       <h1><%= "CBLOL #{@tournament.season} - Split #{@tournament.split}" %></h1>
       <p>Data collected from casting videos on YouTube</p>
       <br>
@@ -57,14 +57,14 @@
 
   <br>
 
-  <div id="top-watched-chart">
+  <div class="mb-5" id="top-watched-chart">
     <h2>Top 5 casts in audience</h2>
     <%= bar_chart @top_5_casts, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
-  <div id="audience-chart">
+  <div class="mb-5" id="audience-chart">
     <h2>Audience round by round</h2>
     <%= line_chart @round_views, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
