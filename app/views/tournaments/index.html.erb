@@ -102,8 +102,16 @@
 
   <div id="audience-chart">
     <h2>Audience</h2>
-    <%= line_chart @audience %>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
+
+      <%= data = @data.each_slice(5).to_a%>
+      <%= pie_chart (data) %>
+
+    <%= column_chart data.map { |tournament|
+    [{name: tournament.first[0], data: tournament.first[1]}]}%>
+
+    <%#= line_chart @top_harray.map{ |tournament|
+      {library: {hAxis: {title: "X", data: tournament.first[0]}, vAxis: {title: "Y", audience: tournament.first[1]}}}}  %>
+
   </div>
 
   <br>
