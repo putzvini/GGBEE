@@ -62,7 +62,7 @@ def top_5(id)
       tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
       team_blue: Team.find(match.blue_team_id),
       team_red: Team.find(match.red_team_id),
-      views: match.match_like,
+      views: match.match_view,
       date: match.match_date,
     }
   end
