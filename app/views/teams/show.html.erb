@@ -52,6 +52,19 @@
   </div>
 
 <div class="container p-4">
+
+  <div class="mb-5 mt-5" id="player-card" >
+
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "#{@team.team_tag}-logo.png", class: "card-img-top", alt: "Card image cap" %>
+      <div class="card-body">
+        <p class="card-text">Player Name: <%#= @player.name %></p>
+        <p class="card-text">Player Name: <%#= @player.nickname %></p>
+      </div>
+    </div>
+
+  </div>
+
   <br>
 
   <div class="mb-5" id="last-5-audiences-chart">
