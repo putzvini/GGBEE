@@ -52,17 +52,25 @@
   </div>
 
 <div class="container p-4">
+  <h2>Present Lineup</h2>
 
   <div class="mb-5 mt-5" id="player-card" >
-
+    <%  @players.each do |player| %>
     <div class="card" style="width: 18rem;">
-      <%= image_tag "#{@team.team_tag}-logo.png", class: "card-img-top", alt: "Card image cap" %>
+      <%= image_tag "no-avatar.png", class: "card-img-top", alt: "Card image cap" %>
       <div class="card-body">
-        <p class="card-text">Player Name: <%#= @player.name %></p>
-        <p class="card-text">Player Name: <%#= @player.nickname %></p>
+        <p class="card-text"><strong>Name:</strong> <%= player.player_name.titleize %></p>
+        <p class="card-text"><strong>Nickname:</strong> <%= player.player_nick.titleize %></p>
       </div>
     </div>
-
+    <% end %>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "no-avatar.png", class: "card-img-top", alt: "Card image cap" %>
+      <div class="card-body">
+        <p class="card-text"><strong>Coach Name:</strong> </p>
+        <p class="card-text"></p>
+      </div>
+    </div>
   </div>
 
   <br>
