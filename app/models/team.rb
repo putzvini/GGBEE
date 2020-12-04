@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :players
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
