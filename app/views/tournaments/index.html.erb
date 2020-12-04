@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="myCarousel" class="carousel slide carousel-fade mb-5" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner.jpg' %>); background-size: cover ">
             <div class="mask flex-center">
@@ -28,144 +28,104 @@
 </div>
 
 <div class="container p-4">
-
-  <div class="row">
-
+  <div class="row mb-3">
     <div class="col-8">
-      <h1>CBLOL 2021</h1>
-      <p><strong>EVENT: </strong>Riot's Official LOL Brazilian Championship</p>
+      <h1><strong>LoL competitive scene in Brazil</strong></h1>
+      <p><strong>GGBee </strong>analyzes CBLoL data  from YouTube since 2019</p>
       <br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Split 1</th>
-            <th>Split 2</th>
-            <th>Organizations</th>
-            <th>Broadcast on</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>02/03/2021 - 02/06/2021</td>
-            <td>02/03/2021 - 02/06/2021</td>
-            <td>12 Teams</td>
-            <td>Youtube and Twitch</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="info_cards_grid">
+        <div class="card">
+          <h5>Splits analyzed</h5>
+          <p><%= @tournaments.count %></p>
+        </div>
+        <div class="card">
+          <h5>Round live casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:casts]) %></p>
+        </div>
+        <div class="card">
+          <h5>Total views in casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:views]) %></p>
+        </div>
+        <div class="card">
+          <h5>Avg. views per cast</h5>
+          <p><%= number_with_delimiter(@banner_infos[:views_cast]) %></p>
+        </div>
+        <div class="card">
+          <h5>Likes in cast videos</h5>
+          <p><%= number_with_delimiter(@banner_infos[:likes]) %></p>
+        </div>
+        <div class="card">
+          <h5>Comments in casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:comments]) %></p>
+        </div>
+      </div>
     </div>
     <div class="col-4">
       <%= image_tag 'cblol_cup.png', class: "cup-img" %>
     </div>
   </div>
+  <div class="container p-4">
+    <div class="row mb-5">
+      <h1>Past splits</h1>
+      <br>
+      <table class="table" style="text-align: center">
+        <thead>
+          <tr>
+            <th>Tournament</th>
+            <th>Dates</th>
+            <th>Rounds</th>
+            <th>Champion</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @past_splits.each do |split| %>
+            <tr>
+              <td><%= split[:tournament] %></td>
+              <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
+              <td><%= split[:rounds] %> </td>
+              <td> <%= split[:champion] %> </td>
+              <td> <%=  link_to "Click here for More", tournament_path(split[:t_id]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   <br>
-  <div id="split-carousel">
-    <h4>Past Split</h4>
+    <div class="mb-5" id="audience-chart">
+      <h2>CBLoL historical audience</h2>
+      <p><strong>Round by round since season 2019</strong></p>
+      <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
+    </div>
     <br>
-    <div class="split_carousel_cards_grid">
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2019 - Split 1</p>
-        </div>
+    <div class="mb-5" id="team-carousel">
+      <h4>Participating teams</h4>
+      <br>
+      <div class="teams-carrousel">
+        <% @teams.each do |team| %>
+          <div class="carousel_card">
+            <div>
+              <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+              <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2019 - Split 2</p>
-        </div>
+    </div>
+    <br>
+    <h2>Avg. casting time</h2>
+    <p><strong>Viwers per Date</strong></p>
+    <div class="row">
+      <div class="col-4 text-center">
+        <%= image_tag 'heroes/yasuo.png' %>
       </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2020 - Split 1</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="split_card">
-          <%= image_tag 'logo_cblol.png', class: "split-card-img" %>
-        </div>
-        <div>
-          <p class="split-name">2020 - Split 2</p>
+      <div class="col-8 text-center">
+        <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
+        <p>Cast time by subject (in minutes)</p>
+        <div id="avg-casting-chart">
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
         </div>
       </div>
     </div>
   </div>
-
-  <br>
-
-  <div id="audience-chart">
-    <h2>Audience</h2>
-
-      <%= data = @data.each_slice(5).to_a%>
-      <%= pie_chart (data) %>
-
-    <%= column_chart data.map { |tournament|
-    [{name: tournament.first[0], data: tournament.first[1]}]}%>
-
-    <%#= line_chart @top_harray.map{ |tournament|
-      {library: {hAxis: {title: "X", data: tournament.first[0]}, vAxis: {title: "Y", audience: tournament.first[1]}}}}  %>
-
-  </div>
-
-  <br>
-
-  <div id="team-carousel">
-    <h4>Participating teams</h4>
-    <br>
-    <div class="teams-carrousel">
-      <div class="carousel_card">
-          <%= image_tag 'cru-logo.png', class: "team-logo-img" %>
-          <p class="team-name">Cruzeiro</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'falkol-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Falkol Prodigy</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'fla-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Flamengo</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'fur-logo.png', class: "team-logo-img" %>
-        <p class="team-name">FURIA</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'itz-logo.png', class: "team-logo-img" %>
-        <p class="team-name">INTZ</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'kbm-logo.png', class: "team-logo-img" %>
-        <p class="team-name">KaBuM</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'loud-logo.png', class: "team-logo-img" %>
-        <p class="team-name">LOUD</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'png-logo.png', class: "team-logo-img" %>
-        <p class="team-name">paiN Gaming</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'redcanids-logo.png', class: "team-logo-img" %>
-        <p class="team-name">RED Canids Kalunga</p>
-      </div>
-      <div class="carousel_card">
-        <%= image_tag 'rensga-logo.png', class: "team-logo-img" %>
-        <p class="team-name">Rensga</p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div id="avg-casting-chart">
-    <h2>Average casting time</h2>
-    <%= image_tag 'chart_example.png', style: "width: 1000px"%>
-  </div>
-  <br>
 </div>
