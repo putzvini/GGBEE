@@ -4,8 +4,10 @@ const carousel = () => {
       items: 7,
       slideBy: 'page',
       nav: false,
-      rewind: true
+      rewind: true,
+      controlsText: ["<",">"]
   });
 };
 
 export { carousel };
+
