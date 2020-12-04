@@ -85,7 +85,7 @@
               <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
               <td><%= split[:rounds] %> </td>
               <td> <%= split[:champion] %> </td>
-              <td> <%=  link_to "Click here for More", tournament_path(split[:t_id]) %></td>
+              <td> <%=  link_to "", tournament_path(split[:t_id]), class:"fas fa-angle-double-right" %></td>
             </tr>
           <% end %>
         </tbody>
