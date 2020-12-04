@@ -69,6 +69,10 @@ def top_5(id)
   response.sort_by { |e| e[:views] }.reverse
 end
 
+def players(id)
+  response = Player.where(team_id: id)
+end
+
 private
 
 def calc_x(data, id)
