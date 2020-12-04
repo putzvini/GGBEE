@@ -80,7 +80,7 @@ def seed_db(array)
                           tournament_id: hash[:tournament]
             )
 
-    cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+    cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
     cast_video = JSON.parse(cast_response.body)
 
     cast_duration = cast_video["items"].first["contentDetails"]['duration']
@@ -95,7 +95,7 @@ def seed_db(array)
                         round_id: round.id
            )
     hash[:matches].each do |match|
-      match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+      match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
       match_video = JSON.parse(match_response.body)
 
       match_duration = match_video["items"].first["contentDetails"]['duration']
