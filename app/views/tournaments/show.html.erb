@@ -85,9 +85,9 @@
           <% @top_5_matches.each do |match| %>
             <tr>
               <td><%= match[:team_blue].team_name.capitalize %></td>
-              <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-img"%></td>
+              <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-s"%></td>
               <td>vs</td>
-              <td><%= image_tag "#{match[:team_red].team_tag}-logo.png", class: "team-logo-img"%></td>
+              <td><%= image_tag "#{match[:team_red].team_tag}-logo.png", class: "team-logo-s"%></td>
               <td><%= match[:team_red].team_name.capitalize %></td>
               <td><%= number_with_delimiter(match[:views]) %></td>
               <td><%= match[:date] %></td>
