@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :players
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
@@ -66,6 +67,10 @@ def top_5(id)
     }
   end
   response.sort_by { |e| e[:views] }.reverse
+end
+
+def players(id)
+  response = Player.where(team_id: id)
 end
 
 private

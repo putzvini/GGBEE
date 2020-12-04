@@ -51,6 +51,117 @@ vk = Team.create!(team_name: "keyd",
       team_tag: "vk"
       )
 
+# seed for players table
+puts "Creating players"
+
+p_cnb = [
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player']
+ ]
+p_fla = [
+  ["felipe", "bankai" ],
+  ['filipe', 'ranger'],
+  ['bruno','goku'],
+  ['han','luci'],
+  ['ju','bvoy']
+]
+p_fur = [ 
+  ['william', 'tyrin'],
+  ['luis', 'st1ing'],
+  ['ruan', 'anyyy'],
+  ['joao', 'alternative'],
+  ['yan', 'damage']
+]
+p_itz = [ 
+  ['rodrigo', 'tay'],
+  ['yuri', 'yupps'],
+  ['diogo', 'shini'],
+  ['bruno', 'envy'],
+  ['micael', 'micao']
+]
+p_kbm = [ 
+  ['lee', 'parang'],
+  ['na', 'wiz'],
+  ['arthur', 'tutsz'],
+  ['igor', 'dudstheboy'],
+  ['denilson', 'ceos']
+]
+p_png = [ 
+  ['leonardo', 'robo'],
+  ['marcos', 'cariok'],
+  ['thaigo', 'tinows'],
+  ['felipe', 'brtt'],
+  ['eidi', 'esa']
+]
+p_prg = [ 
+  ['francisco', 'fnb'],
+  ['yan', 'yampi'],
+  ['matheus', 'dynquedo'],
+  ['humberto', 'garo'],
+  ['willyam', 'wos']
+]
+p_rdp = [ 
+  ['bruno', 'glow'],
+  ['marcos', 'krastyel'],
+  ['diego', 'sephis'],
+  ['alan', 'riva'],
+  ['emerson', 'bocajr']
+]
+p_san = [ 
+  ['park', 'jackpot'],
+  ['benjamin', 'hyoga'],
+  ['kim', 'rainbow'],
+  ['matheus', 'sarkis'],
+  ['gabriel', 'hawk']
+]
+p_one = [ 
+  ['matheus', 'skybart'],
+  ['wyllian', 'wyll'],
+  ['bruno', 'brucer'],
+  ['pablo', 'pbo'],
+  ['gabriel', 'jojo']
+]
+p_up = [
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player'],
+  ['unknown', 'player']
+]
+p_vk = [ 
+  ['leonardo', 'hidan'],
+  ['gustavo', 'minerva'],
+  ['julio', 'nosferus'],
+  ['augusto', 'klaus'],
+  ['gabriel', 'turtle']
+]
+
+def seed_player(array, team)
+  array.each do |p|
+    Player.create!(
+      player_name: p[0],
+      player_nick: p[1],
+      team_id: team.id
+    )
+  end
+end
+
+seed_player(p_cnb, cnb)
+seed_player(p_fla, fla)
+seed_player(p_fur, fur)
+seed_player(p_itz, itz)
+seed_player(p_kbm, kbm)
+seed_player(p_png, png)
+seed_player(p_prg, prg)
+seed_player(p_rdp, rdp)
+seed_player(p_san, san)
+seed_player(p_one, one)
+seed_player(p_up, up)
+seed_player(p_vk, vk)
+
 # seed for tournaments table
 puts 'Creating tournaments'
 
@@ -80,7 +191,7 @@ def seed_db(array)
                           tournament_id: hash[:tournament]
             )
 
-    cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+    cast_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{hash[:cast_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
     cast_video = JSON.parse(cast_response.body)
 
     cast_duration = cast_video["items"].first["contentDetails"]['duration']
@@ -95,7 +206,7 @@ def seed_db(array)
                         round_id: round.id
            )
     hash[:matches].each do |match|
-      match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics&maxResults=100")
+      match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
       match_video = JSON.parse(match_response.body)
 
       match_duration = match_video["items"].first["contentDetails"]['duration']
