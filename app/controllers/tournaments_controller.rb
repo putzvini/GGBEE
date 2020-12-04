@@ -2,9 +2,12 @@ class TournamentsController < ApplicationController
   def index
     @tournaments = Tournament.all
     @teams = Team.all
+    @past_splits = past_splits_table
     @audience = audience
     @banner_infos = banner_infos_tournaments
-    @donut = avg_time
+    @avg_time = avg_time
+    @donut = donut
+    
   end
 
   def show

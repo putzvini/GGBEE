@@ -30,63 +30,80 @@
 <div class="container p-4">
   <div class="row">
     <div class="col-8">
-      <h1>CBLOL 2021</h1>
-      <p><strong>EVENT: </strong>Riot's Official LOL Brazilian Championship</p>
+      <h1><strong>LoL competitive scene in Brazil</strong></h1>
+      <p><strong>GGBee </strong>analyzes CBLoL data  from YouTube since 2019</p>
       <br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Split 1</th>
-            <th>Split 2</th>
-            <th>Organizations</th>
-            <th>Broadcast on</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>02/03/2021 - 02/06/2021</td>
-            <td>02/03/2021 - 02/06/2021</td>
-            <td>12 Teams</td>
-            <td>Youtube and Twitch</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="info_cards_grid">
+        <div class="card">
+          <h5>Splits analyzeds</h5>
+          <p><%= @tournaments.count %></p>
+        </div>
+        <div class="card">
+          <h5>Round live casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:casts]) %></p>
+        </div>
+        <div class="card">
+          <h5>Total views in casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:views]) %></p>
+        </div>
+        <div class="card">
+          <h5>Avg. viewws per cast</h5>
+          <p><%= number_with_delimiter(@banner_infos[:views_cast]) %></p>
+        </div>
+        <div class="card">
+          <h5>Likes in cast videos</h5>
+          <p><%= number_with_delimiter(@banner_infos[:likes]) %></p>
+        </div>
+        <div class="card">
+          <h5>Comments in casts</h5>
+          <p><%= number_with_delimiter(@banner_infos[:comments]) %></p>
+        </div>
+      </div>
     </div>
     <div class="col-4">
       <%= image_tag 'cblol_cup.png', class: "cup-img" %>
     </div>
   </div>
 
-  <br>
-
-<h1><%= @banner_infos %></h1>
-
-  <div id="split-carousel">
-    <h4>Past Splits</h4>
+  <div class="container p-4">
+  <div class="row">
+    <h1>Past splits</h1>
     <br>
-    <div class="split_carousel_cards_grid">
-      <% @tournaments.each do |tournament| %>
-        <div class="carousel_card pl-3" >
-          <div>
-            <%= image_tag 'logo_cblol.png', class: "team-logo-img" %>
-            <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
-          </div>
-        </div>
-    <% end %>
-    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Tournament</th>
+          <th>Dates</th>
+          <th>Rounds</th>
+          <th>Champion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @past_splits.each do |split| %>
+          <tr>
+            <td><%= split[:tournament] %></td>
+            <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
+            <td><%= split[:rounds] %> </td>
+            <td> <%= split[:champion] %> </td>
+            <td> <%=  link_to "More", tournament_path(split[:t_id]) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
   <br>
 
   <div id="audience-chart">
-    <h2>CBLOL Daily Historical Audience - 2019 to 2020</h2>
-    <p><strong>Viewers per Date</strong></p>
+    <h2>CBLoL historical audience</h2>
+    <p><strong>Round by round since season 2019</strong></p>
     <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
   </div>
 
   <br>
 
-    <div id="team-carousel">
+  <div id="team-carousel">
     <h4>Participating teams</h4>
     <br>
     <div class="teams-carrousel">
@@ -102,10 +119,23 @@
   </div>
 
   <br>
-  <div id="avg-casting-chart">
-    <h2>Avg. Casting Time</h2>
+  
+  <div class="container p-4">
+    <h2>Avg. casting time</h2>
     <p><strong>Viwers per Date</strong></p>
-    <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
+    <div class="row">
+      <div class="col-4 text-center">
+        <%= image_tag 'heroes/yasuo.png' %>
+      </div>
+  
+      <div class="col-8 text-center">
+        <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
+        <p>Cast time by subject (in minutes)</p>
+        <div id="avg-casting-chart">
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>  
+        </div>
+      </div>
+    </div>
   </div>
   <br>
 </div>

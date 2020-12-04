@@ -59,8 +59,8 @@ def top_5(id)
     tournament = Tournament.find(round.tournament_id)
     response << {
       tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
-      team_blue: Team.find(match.blue_team_id).team_name,
-      team_red: Team.find(match.red_team_id).team_name,
+      team_blue: Team.find(match.blue_team_id),
+      team_red: Team.find(match.red_team_id),
       views: match.match_like,
       date: match.match_date,
     }
