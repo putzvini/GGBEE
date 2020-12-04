@@ -14,7 +14,10 @@
     </div>
   </div>
 </div>
-  <div class="row pr-5 pl-5" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1588007374946-c79543903e8a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80); background-size: cover ">
+  <div class="row pr-5 pl-5" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5); ">
+    <div class="col-4 d-flex justify-content-center align-items-center">
+      <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
+    </div>
     <div class="col-8 p-5" style="color: white">
       <h1><strong><%= @team.team_long_name.titleize %></strong></h1>
       <p>Data collected from casting videos on YouTube</p>
@@ -45,9 +48,6 @@
           <p><%= number_with_delimiter(@banner[:dislikes]) %></p>
         </div>
       </div>
-    </div>
-    <div class="col-4 d-flex justify-content-center align-items-center">
-      <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
   </div>
 
