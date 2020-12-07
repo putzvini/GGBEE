@@ -1,0 +1,42 @@
+.blockquote-wrapper {
+   display: flex;
+   align-self: center;
+}
+
+/* Blockquote main style */
+.blockquote {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 620px;
+  left: 105px;
+}
+
+/* Blockquote header */
+.blockquote h1 {
+  font-family: 'Montserrat';
+  position: relative; /* for pseudos */
+  color: #93c57c;
+  font-size: 2.8rem;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0;
+  border: 2px solid #fff;
+  border: solid 2px;
+  border-radius:20px;
+  padding: 25px;
+}
+
+.hero-img {
+  position: relative;
+  height: 336px;
+  right: 40px;
+}
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) {
+    .blockquote h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+   }
+
+}
