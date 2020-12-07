@@ -39,14 +39,12 @@ def banner_infos_team(id)
   response
 end
 
-<<<<<<< HEAD
 def last_5(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
   var.each_with_index do |match, i|
     array = []
-    array << i+1
-    # array << match.match_date.to_formatted_s(:rfc822)
+    array << "##{5-i} | #{match.match_date.to_formatted_s(:rfc822)}"
     array << match.match_view
     response << array
   end
