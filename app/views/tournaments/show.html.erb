@@ -31,8 +31,8 @@
           <p>Broadcasts</p>
         </div>
         <div class="card">
-          <h4><%= number_with_delimiter(@banner[:time]) %></h4>
-          <p>Broadcast Time (min.)</p>
+          <h4><%= number_with_delimiter(@banner[:time]) %> min</h4>
+          <p>Broadcast Time</p>
         </div>
         <div class="card">
           <h4><%= @banner[:matches] %></h4>
@@ -57,24 +57,15 @@
 
 <div class="container p-4">
 
-  <br>
-
-  <div class="mb-5" id="top-watched-chart">
-    <h2>Top 5 Cast Audiences</h2>
-    <p><strong>Playoffs and regular season casting videos</strong></p>
-    <%= bar_chart @top_5_casts, thousands: ",", colors: ["#72BFC9", "white"] %>
-  </div>
-
-  <br>
-
   <div class="mb-5" id="audience-chart">
     <h2>Audience Round by Round</h2>
     <p><strong>Casting videos in Youtube</strong></p>
-    <%= line_chart @round_views, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <%= column_chart @round_views, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
-  <div class="container">
-  <div class="row">
+  <br>
+
+  <div class="row mt-5 mb-5">
     <div class="blockquote-wrapper justify-content-around">
       <div class="col-3"><%= image_tag 'heroes/leona.png', class: "hero-img" %></div>
       <div class="col-9">
@@ -84,7 +75,6 @@
       </div>
     </div>
   </div>
-</div>
 
 <br>
 
