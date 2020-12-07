@@ -1,11 +1,12 @@
 class Team < ApplicationRecord
+  has_many :players
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
 def top_avg_chart(data)
   response = {}
   Team.all.each do |team|
-    response[team.team_name.capitalize] = 0
+    response[team.team_name.titleize] = 0
     b = Match.select(data).where(blue_team_id: team.id)
     b_count = b.count
     b_sum = 0
@@ -18,7 +19,7 @@ def top_avg_chart(data)
     r.each do |relation|
       r_sum += relation[data]
     end
-    response[team.team_name.capitalize] += ((b_sum + r_sum)/(b_count + r_count)).round
+    response[team.team_name.titleize] += ((b_sum + r_sum)/(b_count + r_count)).round
   end
   response.sort_by { |k, v| v }.reverse
 end
@@ -59,13 +60,17 @@ def top_5(id)
     tournament = Tournament.find(round.tournament_id)
     response << {
       tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
-      team_blue: Team.find(match.blue_team_id).team_name,
-      team_red: Team.find(match.red_team_id).team_name,
-      views: match.match_like,
+      team_blue: Team.find(match.blue_team_id),
+      team_red: Team.find(match.red_team_id),
+      views: match.match_view,
       date: match.match_date,
     }
   end
   response.sort_by { |e| e[:views] }.reverse
+end
+
+def players(id)
+  response = Player.where(team_id: id)
 end
 
 private

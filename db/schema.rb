@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_182154) do
+ActiveRecord::Schema.define(version: 2020_12_04_144005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_182154) do
     t.index ["blue_team_id"], name: "index_matches_on_blue_team_id"
     t.index ["cast_id"], name: "index_matches_on_cast_id"
     t.index ["red_team_id"], name: "index_matches_on_red_team_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "player_name"
+    t.string "player_nick"
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -88,5 +97,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_182154) do
   add_foreign_key "matches", "casts"
   add_foreign_key "matches", "teams", column: "blue_team_id"
   add_foreign_key "matches", "teams", column: "red_team_id"
+  add_foreign_key "players", "teams"
   add_foreign_key "rounds", "tournaments"
 end
