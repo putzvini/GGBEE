@@ -27,28 +27,28 @@
       <br>
       <div class="info_cards_grid">
         <div class="card">
-          <h5>Broadcasts</h5>
-          <p><%= @banner[:casts] %></p>
+          <h4><%= @banner[:casts] %></h4>
+          <p>Broadcasts</p>
         </div>
         <div class="card">
-          <h5>Broadcast Time</h5>
-          <p><%= number_with_delimiter(@banner[:time]) %>minutes</p>
+          <h4><%= number_with_delimiter(@banner[:time]) %></h4>
+          <p>Broadcast Time (min.)</p>
         </div>
         <div class="card">
-          <h5>Matches brodcasted</h5>
-          <p><%= @banner[:matches] %></p>
+          <h4><%= @banner[:matches] %></h4>
+          <p>Matches brodcasted</p>
         </div>
         <div class="card">
-          <h5>Views in casting videos</h5>
-          <p><%= number_with_delimiter(@banner[:views]) %></p>
+          <h4><%= number_with_delimiter(@banner[:views]) %></h4>
+          <p>Views in casting videos</p>
         </div>
         <div class="card">
-          <h5>Avg. views per cast</h5>
-          <p><%= number_with_delimiter(@banner[:views_cast]) %></p>
+          <h4><%= number_with_delimiter(@banner[:views_cast]) %></h4>
+          <p>Avg. views per cast</p>
         </div>
         <div class="card">
-          <h5>Likes in casting videos</h5>
-          <p><%= number_with_delimiter(@banner[:likes_cast]) %></p>
+          <h4><%= number_with_delimiter(@banner[:likes_cast]) %></h4>
+          <p>Likes in casting videos</p>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
       <div class="col-3"><%= image_tag 'heroes/leona.png', class: "hero-img" %></div>
       <div class="col-9">
         <div class="blockquote">
-          <h1>Intuitive design happens when <span style="color:#ffffff">current knowledge</span> is the same as the <span style="color:#ffffff">target knowledge.</span></h1>
+          <h1>Every split has 2 types of videos: <span style="color:#ffffff">casts</span> and <span style="color:#ffffff">matches.</span> Usually, every cast video is composed of<span style="color:#ffffff"> 4 matches.</span></h1>
         </div>
       </div>
     </div>
