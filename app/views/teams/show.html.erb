@@ -24,54 +24,62 @@
       <br>
       <div class="info_cards_grid">
         <div class="card">
-          <h5><strong>Matches</strong></h5>
-          <p><%= @banner[:matches] %></p>
+          <h4><strong> <%= @banner[:matches] %></strong><h4>
+          <p>Matches</p>
         </div>
         <div class="card">
-          <h5><strong>Total Views</strong></h5>
-          <p><%= number_with_delimiter(@banner[:views]) %></p>
+          <h4><strong><%= number_with_delimiter(@banner[:views]) %></strong></h4>
+          <p>Total Views</p>
         </div>
         <div class="card">
-          <h5><strong>Avg. Views per Match</strong></h5>
-          <p><%= number_with_delimiter(@banner[:views_match]) %></p>
+          <h4><strong><%= number_with_delimiter(@banner[:views_match]) %></strong></h4>
+          <p>Avg. Views per Match</p>
         </div>
         <div class="card">
-          <h5><strong>Video Likes</strong></h5>
-          <p><%= number_with_delimiter(@banner[:likes]) %></p>
+          <h4><strong><%= number_with_delimiter(@banner[:likes]) %></strong></h4>
+          <p>Video Likes</p>
         </div>
         <div class="card">
-          <h5><strong>Video Comments</strong></h5>
-          <p><%= number_with_delimiter(@banner[:comments]) %></p>
+          <h4><strong><%= number_with_delimiter(@banner[:comments]) %></strong></h4>
+          <p>Video Comments</p>
         </div>
         <div class="card">
-          <h5><strong>Video Dislikes</strong></h5>
-          <p><%= number_with_delimiter(@banner[:dislikes]) %></p>
+          <h4><strong><%= number_with_delimiter(@banner[:dislikes]) %></strong></h4>
+          <p>Video Dislikes</p>
         </div>
       </div>
     </div>
   </div>
 
-<div class="container p-4">
+<!-- <div class="container p-4">
   <h2>Present Lineup</h2>
 
   <div class="mb-5 mt-5" id="player-card" >
     <%  @players.each do |player| %>
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "no-avatar.png", class: "card-img-top", alt: "Card image cap" %>
+    <div class="card">
+      <%= image_tag "players/#{player.player_nick}.jpg", class: "card-img-top", alt: "Card image cap" %>
       <div class="card-body">
         <p class="card-text"><strong>Name:</strong> <%= player.player_name.titleize %></p>
         <p class="card-text"><strong>Nickname:</strong> <%= player.player_nick.titleize %></p>
       </div>
     </div>
     <% end %>
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "no-avatar.png", class: "card-img-top", alt: "Card image cap" %>
-      <div class="card-body">
-        <p class="card-text"><strong>Coach Name:</strong> </p>
-        <p class="card-text"></p>
-      </div>
-    </div>
   </div>
+</div> -->
+
+<div class="container p-4">
+  <h2>Present Lineup</h2>
+  <div class="mb-5 mt-5" id="player-card">
+    <%  @players.each do |player| %>
+      <div class="profile-card-2" ><%= image_tag "players/#{player.player_nick}.jpg", class: "img img-responsive", alt: "Card image cap" %>
+          <div class="profile-name"><%= player.player_nick.titleize %></div>
+          <div class="profile-username"><%= player.player_name.titleize %></div>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+<div class="container p-4">
 
   <br>
 
