@@ -64,7 +64,7 @@ def top_5(id)
       team_blue: Team.find(match.blue_team_id),
       team_red: Team.find(match.red_team_id),
       views: match.match_view,
-      date: match.match_date,
+      date: match.match_date.to_formatted_s(:rfc822),
     }
   end
   response.sort_by { |e| e[:views] }.reverse
