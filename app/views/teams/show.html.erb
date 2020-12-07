@@ -24,27 +24,27 @@
       <br>
       <div class="info_cards_grid">
         <div class="card">
-          <h4><strong> <%= @banner[:matches] %></strong><h4>
+          <h4> <%= @banner[:matches] %><h4>
           <p>Matches</p>
         </div>
         <div class="card">
-          <h4><strong><%= number_with_delimiter(@banner[:views]) %></strong></h4>
+          <h4><%= number_with_delimiter(@banner[:views]) %></h4>
           <p>Total Views</p>
         </div>
         <div class="card">
-          <h4><strong><%= number_with_delimiter(@banner[:views_match]) %></strong></h4>
+          <h4><%= number_with_delimiter(@banner[:views_match]) %></h4>
           <p>Avg. Views per Match</p>
         </div>
         <div class="card">
-          <h4><strong><%= number_with_delimiter(@banner[:likes]) %></strong></h4>
+          <h4><%= number_with_delimiter(@banner[:likes]) %></h4>
           <p>Video Likes</p>
         </div>
         <div class="card">
-          <h4><strong><%= number_with_delimiter(@banner[:comments]) %></strong></h4>
+          <h4><%= number_with_delimiter(@banner[:comments]) %></h4>
           <p>Video Comments</p>
         </div>
         <div class="card">
-          <h4><strong><%= number_with_delimiter(@banner[:dislikes]) %></strong></h4>
+          <h4><%= number_with_delimiter(@banner[:dislikes]) %></h4>
           <p>Video Dislikes</p>
         </div>
       </div>
