@@ -4,7 +4,6 @@
   grid-gap: 1px;
 }
 
-
 .info_cards_grid p {
   font-size: 15px;
   font-style: "Lato";
@@ -14,12 +13,29 @@
 .info_cards_grid h4 {
   font-size: 30px;
   font-style: "Montsserrat";
-  font-weight: 400;
+  font-weight: 700;
+}
+
+#info-card p {
+  font-style: "Lato";
+  font-weight: 100;
+}
+
+#index-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  text-align: center;
 }
 
 
+#index-cards .card {
+  border-bottom: solid #72BFC9;
+  background: linear-gradient(rgba(38,39,41,0.3),rgba(114,191,201,0.1));
+}
 
-#info-card {
-  font-style: "Lato";
-  font-weight: 100;
+.cup-img-index {
+  position: relative;
+  bottom: 50px;
+  height: 300px;
 }

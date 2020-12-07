@@ -5,8 +5,8 @@
                 <div class="container">
                     <div class="row align-items-center" style="margin-top:60px">
                         <div class="col-md-8 col-12 order-md-1 order-2">
-                            <h4 id="presentation">A <strong style="color:#72BFC9">GGBee</strong> conecta você com as principais métricas de stream do CBLOL.</h4>
-                            <p id="presentation2">Saiba tudo sobre o campeonato nacional de e-sports mais assistido do Brasil. </p> <br>
+                            <h4 id="presentation"><strong style="color:#72BFC9">GGBee</strong> conects you with the main stream metrics of the League of Legends Brazilian Championship</h4>
+                            <p id="presentation2">Get to know all about views, comments and likes about the main Brazilian e-sports tournament </p> <br>
                         </div>
                     </div>
                 </div>
@@ -17,8 +17,8 @@
                 <div class="container">
                     <div class="row align-items-center" style="margin-top:60px">
                         <div class="col-md-8 col-12 order-md-1 order-2">
-                            <h4>Quais <strong style="color:#72BFC9">times</strong> geram mais engajamento?</h4>
-                            <p>A partir de dados do YouTube, você poderá comparar time a time, quais têm mais engajamento nos streams do CBLOL.</p> <br> <%= link_to 'VER AGORA', teams_path %>
+                            <h4>Which <strong style="color:#72BFC9">team</strong> have more engagement?</h4>
+                            <p>We gather YouTube data and process it, so you can compare the best teams in engagement</p> <br> <%= link_to 'CHECK IT', teams_path %>
                         </div>
                     </div>
                 </div>
@@ -28,48 +28,39 @@
 </div>
 
 <div class="container p-4">
-  <div class="row mb-3">
-    <div class="col-8">
+  <div class="row">
+    <div class="col-9" id="info-card">
       <h1><strong>LoL Competitive Scene in Brazil</strong></h1>
-      <p><strong>GGBee </strong>analyzes CBLoL data  from YouTube since 2019</p>
+      <p>GGBee analyzes CBLoL data from YouTube including 2019 and 2020 Championships</p>
       <br>
-      <div class="info_cards_grid">
+      <div class="info_cards_grid" id="index-cards">
         <div class="card">
-          <h5>Splits analyzed</h5>
-          <p><%= @tournaments.count %></p>
+          <h4><%= number_with_delimiter(@banner_infos[:views]) %></h4>
+          <p>Total views in casts</p>
         </div>
         <div class="card">
-          <h5>Round live casts</h5>
-          <p><%= number_with_delimiter(@banner_infos[:casts]) %></p>
+          <h4><%= number_with_delimiter(@banner_infos[:views_cast]) %></h4>
+          <p>Avg. views per cast</p>
         </div>
         <div class="card">
-          <h5>Total views in casts</h5>
-          <p><%= number_with_delimiter(@banner_infos[:views]) %></p>
+          <h4><%= number_with_delimiter(@banner_infos[:likes]) %></h4>
+          <p>Likes in cast videos</p>
         </div>
         <div class="card">
-          <h5>Avg. views per cast</h5>
-          <p><%= number_with_delimiter(@banner_infos[:views_cast]) %></p>
-        </div>
-        <div class="card">
-          <h5>Likes in cast videos</h5>
-          <p><%= number_with_delimiter(@banner_infos[:likes]) %></p>
-        </div>
-        <div class="card">
-          <h5>Comments in casts</h5>
-          <p><%= number_with_delimiter(@banner_infos[:comments]) %></p>
+          <h4><%= number_with_delimiter(@banner_infos[:comments]) %></h4>
+          <p>Comments in casts</p>
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
+    <div class="col-3">
+      <%= image_tag 'cblol_cup.png', class: "cup-img-index" %>
     </div>
   </div>
   <div class="container p-4">
-    <h2>Past splits</h2>
-    <p><strong>Data from 2019 season</strong></p>
     <div class="row mb-5">
+      <h1>Past splits</h1>
       <br>
-      <table class="table" style="text-align: center">
+      <table class="table table-dark">
         <thead>
           <tr>
             <th>Tournament</th>
@@ -94,8 +85,8 @@
     </div>
   <br>
     <div class="mb-5" id="audience-chart">
-      <h2>CBLoL Historical Audience</h2>
-      <p><strong>Cast views round by round</strong></p>
+      <h2>CBLoL historical audience</h2>
+      <p><strong>Round by round since season 2019</strong></p>
       <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
     </div>
     <br>
@@ -114,8 +105,8 @@
       </div>
     </div>
     <br>
-    <h2>Avg. Casting Time</h2>
-    <p><strong>Cast videos in YouTube</strong></p>
+    <h2>Avg. casting time</h2>
+    <p><strong>Viwers per Date</strong></p>
     <div class="row">
       <div class="col-4 text-center">
         <%= image_tag 'heroes/yasuo.png' %>
@@ -124,7 +115,7 @@
         <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
         <p>Cast time by subject (in minutes)</p>
         <div id="avg-casting-chart">
-          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"], donut: true %>
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
         </div>
       </div>
     </div>
