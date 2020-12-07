@@ -15,7 +15,7 @@
   </div>
 </div>
 
-  <div class="row pr-5 pl-5" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5); ">
+  <div class="row pr-5 pl-5" style="background-color: #4E5155">
     <div class="col-4 d-flex justify-content-center align-items-center">
       <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
@@ -54,7 +54,7 @@
 
 <div class="container p-4">
   <h2>Present Lineup</h2>
-  <div class="mb-5 mt-5" id="player-card">
+  <div class="mt-5" id="player-card">
     <%  @players.each do |player| %>
       <div class="profile-card-2" ><%= image_tag "players/#{player.player_nick}.jpg", class: "img img-responsive", alt: "Card image cap" %>
           <div class="profile-name"><%= player.player_nick.titleize %></div>
