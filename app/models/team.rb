@@ -39,6 +39,7 @@ def banner_infos_team(id)
   response
 end
 
+<<<<<<< HEAD
 def last_5(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
