@@ -1,5 +1,5 @@
 <div class="container p-4">
-  <div class="mb-5" id="team-carousel">
+  <div class="mb-4" id="team-carousel">
     <p>Participating teams</p>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
@@ -18,7 +18,7 @@
     <div class="col-4 d-flex justify-content-center align-items-center">
       <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
-    <div class="col-8 p-4" style="color: white">
+    <div class="col-8 p-4" id="info-card" style="color: white">
       <h1><strong><%= @team.team_long_name.titleize %></strong></h1>
       <p>Data collected from casting videos on YouTube</p>
       <br>
