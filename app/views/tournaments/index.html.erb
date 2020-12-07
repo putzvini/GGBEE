@@ -30,7 +30,7 @@
 <div class="container p-4">
   <div class="row mb-3">
     <div class="col-8">
-      <h1><strong>LoL Competitive Scene in Brazil</strong></h1>
+      <h1><strong>LoL competitive scene in Brazil</strong></h1>
       <p><strong>GGBee </strong>analyzes CBLoL data  from YouTube since 2019</p>
       <br>
       <div class="info_cards_grid">
@@ -65,9 +65,8 @@
     </div>
   </div>
   <div class="container p-4">
-    <h2>Past splits</h2>
-    <p><strong>Data from 2019 season</strong></p>
     <div class="row mb-5">
+      <h1>Past splits</h1>
       <br>
       <table class="table" style="text-align: center">
         <thead>
@@ -94,8 +93,8 @@
     </div>
   <br>
     <div class="mb-5" id="audience-chart">
-      <h2>CBLoL Historical Audience</h2>
-      <p><strong>Cast views round by round</strong></p>
+      <h2>CBLoL historical audience</h2>
+      <p><strong>Round by round since season 2019</strong></p>
       <%= line_chart @audience, thousands: ",", colors: ["#72BFC9", "white"]  %>
     </div>
     <br>
@@ -114,8 +113,8 @@
       </div>
     </div>
     <br>
-    <h2>Avg. Casting Time</h2>
-    <p><strong>Cast videos in YouTube</strong></p>
+    <h2>Avg. casting time</h2>
+    <p><strong>Viwers per Date</strong></p>
     <div class="row">
       <div class="col-4 text-center">
         <%= image_tag 'heroes/yasuo.png' %>
@@ -124,7 +123,7 @@
         <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
         <p>Cast time by subject (in minutes)</p>
         <div id="avg-casting-chart">
-          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"], donut: true %>
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
         </div>
       </div>
     </div>
