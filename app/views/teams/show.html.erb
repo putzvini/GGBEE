@@ -55,7 +55,7 @@
   <h2>Present Lineup</h2>
   <div class="mt-5" id="player-card">
     <%  @players.each do |player| %>
-      <div class="profile-card-2" ><%= image_tag "players/#{player.player_nick}.jpg", class: "img img-responsive", alt: "Card image cap" %>
+      <div class="profile-card-2" ><%= image_tag "players/#{player.player_nick}.png", class: "img img-responsive", alt: "Card image cap" %>
           <div class="profile-name"><%= player.player_nick.titleize %></div>
           <div class="profile-username"><%= player.player_name.titleize %></div>
       </div>
@@ -68,7 +68,7 @@
   <br>
 
   <div class="mb-5" id="last-5-audiences-chart">
-    <h2>Last Matches Audiences</h2>
+    <h2>Last 5 Matches Audiences</h2>
     <p><strong>Views in Youtube match videos</strong></p>
     <%= bar_chart @last_5.map , thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
