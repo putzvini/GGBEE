@@ -1,7 +1,6 @@
 <div class="container p-4">
   <div class="mb-5" id="team-carousel">
     <p>Participating teams</p>
-    <br>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
         <div class="carousel_card">
@@ -15,7 +14,7 @@
   </div>
 </div>
 
-  <div class="row pr-5 pl-5" style="background-color: #4E5155">
+  <div class="row p-5" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= image_path 'banner-back.jpg' %>); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5); ">
     <div class="col-4 d-flex justify-content-center align-items-center">
       <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
