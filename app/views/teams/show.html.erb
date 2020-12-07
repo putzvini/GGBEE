@@ -1,6 +1,6 @@
 <div class="container p-4">
   <div class="mb-5" id="team-carousel">
-    <h4>Participating teams</h4>
+    <p>Participating teams</p>
     <br>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
@@ -52,7 +52,7 @@
   </div>
 
 <div class="container p-4">
-  <h2>Present Lineup</h2>
+  <h2>Last Lineup</h2>
 
   <div class="mb-5 mt-5" id="player-card" >
     <%  @players.each do |player| %>
@@ -76,14 +76,16 @@
   <br>
 
   <div class="mb-5" id="last-5-audiences-chart">
-    <h2>Last matches audiences</h2>
-    <%= bar_chart @last_5, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <h2>Last Matches Audiences</h2>
+    <p><strong>Views in Youtube match videos</strong></p>
+    <%= bar_chart @last_5.map , thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
   <div class="mb-5" id="top-audience-table">
     <h2>Top 5 Audiences</h2>
+    <p><strong>Views in Youtube match videos</strong></p>
     <table class="table" style="text-align: center; vertical-align: middle">
         <thead>
           <tr>

@@ -3,7 +3,7 @@
   <div class="row">
 
   <div class="mb-5" id="split-carousel">
-    <h4>Past Splits</h4>
+    <p>Past Splits</p>
     <br>
     <div class="split_carousel_cards_grid">
       <% @tournaments.each do |tournament| %>
@@ -58,14 +58,16 @@
   <br>
 
   <div class="mb-5" id="top-watched-chart">
-    <h2>Top 5 casts in audience</h2>
+    <h2>Top 5 Cast Audiences</h2>
+    <p><strong>Playoffs and regular season casting videos</strong></p>
     <%= bar_chart @top_5_casts, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
   <div class="mb-5" id="audience-chart">
-    <h2>Audience round by round</h2>
+    <h2>Audience Round by Round</h2>
+    <p><strong>Casting videos in Youtube</strong></p>
     <%= line_chart @round_views, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
@@ -73,6 +75,7 @@
 
   <div id="top-audience-table">
     <h2>Top 5 Audiences</h2>
+    <p><strong>Match videos in Youtube</strong></p>
     <table class="table" style="text-align: center">
         <thead>
           <tr>
