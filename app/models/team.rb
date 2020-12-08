@@ -3,7 +3,7 @@ class Team < ApplicationRecord
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
-def top_5_teams
+def top_teams
   teams_array = []
   Team.all.each do |team|
     arg = Match.select(:match_view).where(red_team_id: team.id).or(Match.select(:match_view).where(blue_team_id: team.id))
@@ -30,7 +30,7 @@ def top_5_teams
     }
     teams_array << hash
   end
-  response = teams_array.sort_by { |hsh| hsh[:avg_views]}.last(5).reverse
+  response = teams_array.sort_by { |hsh| hsh[:avg_views]}.last(3).reverse
 end
 
 def top_avg_chart(data)

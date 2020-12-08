@@ -16,19 +16,19 @@
   
   <br>
   <div class="contaier p-4">
-  <h2>Top 5 Teams</h2>
+  <h2>Top 3 Teams</h2>
   <p><strong>According to matches, avg views and avg likes per match</strong></p>
   <br>
     <div class="card-deck">
-      <% @top_5_teams.each_with_index do |team, i| %>
+      <% @top_teams.each_with_index do |team, i| %>
         <div class="card" style="width: 18rem; box-shadow: 0 20px 50px rgba(0,0,0,0.8)">
-          <%= image_tag "#{team[:team_tag]}-logo.png", class: "card-img-top"%>
+          <%= image_tag "team_banner/#{team[:team_tag]}-banner.png", class: "card-img-top"%>
           <div class="card-body">
-            <h2 class="card-title text-center"><%="#{i+1}º #{team[:team_tag].upcase}"%></h2>
+            <h2 class="card-title text-center"><%="#{i+1}º #{team[:team].upcase}"%></h2>
             <hr style="border-color: #72BFC9; border-width: 2px 0"/>
             <h4 class="card-text text-center"><%= team[:matches] %> matches</h4>
-            <p class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %> avg. views</p>
-            <p class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %> likes per match </p>
+            <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %> avg. views</h4>
+            <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %> likes per match </h4>
             <br>
             <%= link_to "#{team[:team].capitalize} page", team_path(team[:team_id]), class:"btn btn-outline-secondary btn-block" %>
           </div>
