@@ -20,7 +20,7 @@
     </div>
     <div class="col-8 p-4" id="info-card" style="color: white">
       <h1><strong><%= @team.team_long_name.titleize %></strong></h1>
-      <p>Data collected from casting videos on YouTube</p>
+      <p>Data collected from matches videos on YouTube</p>
       <br>
       <div class="info_cards_grid">
         <div class="card">
@@ -70,7 +70,7 @@
   <div class="mb-5" id="last-5-audiences-chart">
     <h2>Last 5 Matches Audiences</h2>
     <p><strong>Views in Youtube match videos</strong></p>
-    <%= bar_chart @last_5.map , thousands: ",", colors: ["#72BFC9", "white"] %>
+    <%= bar_chart @last_5_matches.map , thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
@@ -88,7 +88,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @top_5.each do |match|  %>
+          <% @top_5_matches.each do |match|  %>
           <tr>
             <td style="vertical-align: middle"><%= match[:tournament] %></td>
             <td><%= image_tag "#{match[:team_blue].team_tag}-logo.png", class: "team-logo-s"%></td>
