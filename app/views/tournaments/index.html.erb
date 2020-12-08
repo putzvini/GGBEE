@@ -117,7 +117,7 @@
         <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
         <p>Cast time by subject (in minutes)</p>
         <div id="avg-casting-chart">
-          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"]  %>
+          <%= pie_chart @donut, thousands: ",", colors: ["#72BFC9", "white"], donut: true  %>
         </div>
       </div>
     </div>
