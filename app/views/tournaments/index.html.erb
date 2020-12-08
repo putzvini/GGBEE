@@ -29,30 +29,34 @@
 
 <div class="container p-4">
   <div class="row">
-    <div class="col-9" id="info-card">
+    <div class="col-10" id="info-card">
       <h1><strong>LoL Competitive Scene in Brazil</strong></h1>
       <p>GGBee analyzes CBLoL data from YouTube since 2019 season</p>
       <br>
       <div class="info_cards_grid" id="index-cards">
         <div class="card">
           <h4><%= number_with_delimiter(@banner_infos[:views]) %></h4>
-          <p>Total views in casts</p>
+          <p>Total Views in Casts</p>
         </div>
         <div class="card">
           <h4><%= number_with_delimiter(@banner_infos[:views_cast]) %></h4>
-          <p>Avg. views per cast</p>
+          <p>Avg. Views per cast</p>
         </div>
         <div class="card">
           <h4><%= number_with_delimiter(@banner_infos[:likes]) %></h4>
-          <p>Likes in cast videos</p>
+          <p>Likes in Cast Videos</p>
         </div>
         <div class="card">
           <h4><%= number_with_delimiter(@banner_infos[:comments]) %></h4>
-          <p>Comments in casts</p>
+          <p>Comments in Casts</p>
+        </div>
+        <div class="card">
+          <h4><%= @avg_time[:avg_time] %></h4>
+          <p>Avg. Cast Time</p>
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-2">
       <%= image_tag 'cblol_cup.png', class: "cup-img-index" %>
     </div>
   </div>
@@ -107,14 +111,5 @@
     </div>
   </div>
   <br>
-  <h2>Avg. Casting Time</h2>
-  <p><strong>Viewers per Date</strong></p>
-    <div class="text-center">
-      <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
-      <p>Cast time by subject (in minutes)</p>
-      <div id="avg-casting-chart">
-        <%= pie_chart @donut, thousands: ",", colors: ["#43A5B1","#72BFC9", "#B5DEE3"], donut: true  %>
-      </div>
-    </div>
 </div>
 
