@@ -7,8 +7,8 @@
         <% @tournaments.each do |tournament| %>
           <div class="carousel_card pl-3" >
             <div>
-              <%= link_to image_tag('logo_cblol_blue.png'), tournament_path(tournament), class: "team-logo-img" %>
-              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament)%>
+              <%= link_to image_tag('logo_cblol_blue.png'), tournament_path(tournament), class: "split-logo-img" %>
+              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament), class: "team-name"%>
             </div>
           </div>
       <% end %>
@@ -80,8 +80,8 @@
     </div>
   </div> -->
 
-<div class= "dividers" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(<%= image_path 'dividers/block-split-2.png' %>); ">
-  <h1>Every split has 2 types of videos: <span style="color:#ffffff">casts</span> and <span style="color:#ffffff">matches.</span> Usually, every cast video is composed of<span style="color:#ffffff"> 4 matches.</span></h1>
+<div class= "dividers" style="background-image: url(<%= image_path 'stripe.png' %>); ">
+  <h1>Every split has 2 types of videos: casts and matches. Usually, every cast video is composed of 4 matches.</h1>
 </div>
 
 
