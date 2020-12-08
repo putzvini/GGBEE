@@ -1,6 +1,6 @@
 <div class="container p-4">
   <div class="row">
-    <div class="mb-5" id="split-carousel">
+    <div class="mb-4" id="split-carousel">
       <p>Past Splits</p>
       <br>
       <div class="split_carousel_cards_grid">
@@ -8,7 +8,7 @@
           <div class="carousel_card pl-3" >
             <div>
               <%= image_tag 'logo_cblol_blue.png', class: "team-logo-img" %>
-              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament) %>
+              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament)%>
             </div>
           </div>
       <% end %>
