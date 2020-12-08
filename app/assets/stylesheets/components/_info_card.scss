@@ -28,8 +28,8 @@
 
 #index-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
   text-align: center;
 }
 
@@ -43,4 +43,5 @@
   position: relative;
   bottom: 50px;
   height: 300px;
+  right: 80px;
 }
