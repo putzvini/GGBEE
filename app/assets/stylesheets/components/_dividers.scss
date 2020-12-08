@@ -14,9 +14,19 @@
   margin: 0;
   padding: 40px;
   margin:auto;
-  vertical-align:middle;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
+  vertical-align: middle;
+  left: 150px;
+}
+
+.hero {
+  position: relative;
+  bottom: 100px;
+  right: 150px;
+  height: 250px;
+}
+
+.hero2 {
+  position: relative;
+  bottom: 70px;
+  height: 300px;
 }
