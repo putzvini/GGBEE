@@ -99,7 +99,7 @@
         <% @teams.each do |team| %>
           <div class="carousel_card">
             <div>
-              <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+              <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
               <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
             </div>
           </div>

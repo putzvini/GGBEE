@@ -11,20 +11,28 @@
 }
 
 
-.team-logo-img {
+.team-logo-img img {
   object-fit: contain;
   width: 90px;
   height: 90px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  border: white 1px solid;
+  border: grey 1px solid;
+  transition: all linear 0.25s;
+  cursor: pointer;
 }
 
-.team-name a {
+.team-logo-img img:hover {
+  background-color: grey;
+
+}
+
+.team-name {
   line-height: 1.4;
   font-weight: 300;
   text-align: center;
   padding-top: 5px;
+  text-decoration: none;
 }
 
 .team-logo-big {
@@ -59,5 +67,5 @@
 #team-carousel p {
   display: unset;
   position: absolute;
-  margin-top: 15px;
+  margin-top: 3px;
 }
