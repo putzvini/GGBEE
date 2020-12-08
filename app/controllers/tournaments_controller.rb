@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  #skip_before_action :authenticate_user!
   def index
     @tournaments = Tournament.all
     @teams = Team.all
