@@ -6,16 +6,16 @@
       <% @teams.each do |team| %>
         <div class="carousel_card">
           <div>
-          <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+          <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
           <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-  
+
+
   <br>
-  <div class="contaier p-4">
     <h2>Top 3 Teams</h2>
     <p><strong>According to matches, avg views and avg likes per match since 2019</strong></p>
     <br>
@@ -26,41 +26,35 @@
             <div class="card-body">
               <h2 class="card-title text-center"><%="#{i+1}º #{team[:team].capitalize}"%></h2>
               <hr style="border-color: #72BFC9; border-width: 2px 0"/>
-              <h4 class="card-text text-center"><%= team[:matches] %> matches</h4>
-              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %> avg. views</h4>
-              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %> likes per match </h4>
+              <h4 class="card-text text-center"><%= team[:matches] %> <span style="font-family: 'lato'; font-weight: 100">matches</span></h4>
+              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %><span style="font-family: 'lato'; font-weight: 100"> avg. views</span></h4>
+              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %><span style="font-family: 'lato'; font-weight: 100"> likes per match </span></h4>
               <br>
-              <%= link_to "#{team[:team].capitalize} page", team_path(team[:team_id]), class:"btn btn-outline-secondary btn-block" %>
+              <%= link_to "#{team[:team].capitalize} Page", team_path(team[:team_id]), class:"btn btn-outline-secondary btn-block" %>
             </div>
           </div>
         <% end %>
       </div>
   </div>
-  
   <br>
 
+<div class="container p-4">
   <div class="mb-5" id="top-audience-teams">
     <h2>Top Teams in Avg. Audience</h2>
-    <p><strong>Avg. viwers per game, seasons 2019 and 2020</strong></p>
-    <%= line_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <p><strong>Avg. viewers per game, seasons 2019 and 2020</strong></p>
+    <%= column_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
+</div>
 
-  <br>
+<div class= "dividers mb-5" style="background-image: url(<%= image_path 'stripe.png' %>); ">
+  <h1>Every split has 2 types of videos: casts and matches. Usually, every cast video is composed of 4 matches.</h1>
+</div>
 
+<div class="container p-4">
   <div class="mb-5" id="top-like-teams">
     <h2>Top Teams in Video Likes</h2>
     <p><strong>Avg. YouTube likes per game, seasons 2019 and 2020</strong></p>
-    <%= bar_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <%= column_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
-
-  <br>
-
-  <div id="top-comment-teams">
-    <h2>Top Teams in Video Comments</h2>
-    <p><strong>Avg. YouTube comments per game, seasons 2019 and 2020</strong></p>
-    <%= bar_chart @top_comment_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
-  </div>
-
-  <br>
-
 </div>
+

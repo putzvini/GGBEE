@@ -1,11 +1,11 @@
 <div class="container p-4">
-  <div class="mb-4" id="team-carousel">
-    <p>Participating teams</p>
+  <div class="mb-3" id="team-carousel">
+    <p style="margin-top: 3px;">Participating teams</p>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
         <div class="carousel_card">
           <div>
-            <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+            <%= link_to image_tag( "#{team.team_tag}-logo.png") ,team_path(team), class: "team-logo-img" %>
             <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
