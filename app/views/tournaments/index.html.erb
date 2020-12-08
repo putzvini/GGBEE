@@ -76,7 +76,7 @@
           <h5 class="card-text text-center"><span style="font-family: 'lato'; font-weight: 100">Rounds:</span> <%= split[:rounds] %></h5>
           <h5 class="card-text text-center"><span style="font-family: 'lato'; font-weight: 100">Winner:</span> <%= split[:champion] %></h5>
           <br>
-          <%= link_to "#{split[:tournament]} Page", tournament_path(split[:t_id]), class:"btn btn-outline-secondary btn-block" %>
+          <%= link_to "Show More", tournament_path(split[:t_id]), class:"btn btn-outline-secondary btn-block" %>
         </div>
       </div>
     <% end %>

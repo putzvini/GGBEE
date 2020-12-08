@@ -13,8 +13,6 @@
       <% end %>
     </div>
   </div>
-
-
   <br>
     <h2>Top 3 Teams</h2>
     <p><strong>According to matches, avg views and avg likes per match since 2019</strong></p>
@@ -42,6 +40,7 @@
   <div class="mb-5" id="top-audience-teams">
     <h2>Top Teams in Avg. Audience</h2>
     <p><strong>Avg. viewers per game, seasons 2019 and 2020</strong></p>
+    <br>
     <%= column_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
 </div>
