@@ -58,63 +58,68 @@
   </div>
 </div>
 
-  <div class="container p-4">
-    <div class="row mb-5">
-      <h1>Past Splits</h1>
-      <br>
-      <table class="table table-dark">
-        <thead>
+<div class= "dividers mb-5" style="background-image: url(<%= image_path 'stripe.png' %>); ">
+  <h1>Every split has 2 types of videos: casts and matches. Usually, every cast video is composed of 4 matches.</h1>
+</div>
+
+
+<div class="container p-4">
+  <div class="row mb-5">
+    <h1>Past Splits</h1>
+    <br>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Tournament</th>
+          <th>Dates</th>
+          <th>Rounds</th>
+          <th>Champion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @past_splits.each do |split| %>
           <tr>
-            <th>Tournament</th>
-            <th>Dates</th>
-            <th>Rounds</th>
-            <th>Champion</th>
-            <th></th>
+            <td><%= split[:tournament] %></td>
+            <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
+            <td><%= split[:rounds] %> </td>
+            <td> <%= split[:champion] %> </td>
+            <td> <%=  link_to "", tournament_path(split[:t_id]), class:"fas fa-angle-double-right" %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @past_splits.each do |split| %>
-            <tr>
-              <td><%= split[:tournament] %></td>
-              <td><%= "#{split[:start_date]} - #{split[:end_date]}" %></td>
-              <td><%= split[:rounds] %> </td>
-              <td> <%= split[:champion] %> </td>
-              <td> <%=  link_to "", tournament_path(split[:t_id]), class:"fas fa-angle-double-right" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  <br>
-    <div class="mb-5" id="audience-chart">
-      <h2>CBLoL Historical Audience</h2>
-      <p><strong>Total viewers round by round since season 2019</strong></p>
-      <%= area_chart @audience, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"  %>
-    </div>
-    <br>
-    <div class="mb-5" id="team-carousel">
-      <p>Participating Teams</p>
-      <br>
-      <div class="teams-carrousel">
-        <% @teams.each do |team| %>
-          <div class="carousel_card">
-            <div>
-              <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
-              <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
-            </div>
-          </div>
         <% end %>
+      </tbody>
+    </table>
+  </div>
+<br>
+  <div class="mb-5" id="audience-chart">
+    <h2>CBLoL Historical Audience</h2>
+    <p><strong>Total viewers round by round since season 2019</strong></p>
+    <%= area_chart @audience, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"  %>
+  </div>
+  <br>
+  <div class="mb-5" id="team-carousel">
+    <p>Participating Teams</p>
+    <br>
+    <div class="teams-carrousel">
+      <% @teams.each do |team| %>
+        <div class="carousel_card">
+          <div>
+            <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
+            <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <h2>Avg. Casting Time</h2>
+  <p><strong>Viewers per Date</strong></p>
+    <div class="text-center">
+      <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
+      <p>Cast time by subject (in minutes)</p>
+      <div id="avg-casting-chart">
+        <%= pie_chart @donut, thousands: ",", colors: ["#43A5B1","#72BFC9", "#B5DEE3"], donut: true  %>
       </div>
     </div>
-    <br>
-    <h2>Avg. Casting Time</h2>
-    <p><strong>Viewers per Date</strong></p>
-      <div class="text-center">
-        <h3><strong><%= @avg_time[:avg_time]%></strong></h3>
-        <p>Cast time by subject (in minutes)</p>
-        <div id="avg-casting-chart">
-          <%= pie_chart @donut, thousands: ",", colors: ["#43A5B1","#72BFC9", "#B5DEE3"], donut: true  %>
-        </div>
-      </div>
-  </div>
+</div>
 
