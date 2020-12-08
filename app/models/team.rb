@@ -3,6 +3,36 @@ class Team < ApplicationRecord
   validates :team_name, :team_long_name, :team_tag, presence: true
 end
 
+def top_teams
+  teams_array = []
+  Team.all.each do |team|
+    arg = Match.select(:match_view).where(red_team_id: team.id).or(Match.select(:match_view).where(blue_team_id: team.id))
+    views = []
+    arg.each do |match|
+      views << match[:match_view]
+    end
+    matches = views.count
+    avg_views = (views.sum / matches).round
+    args2 = Match.select(:match_like).where(red_team_id: team.id).or(Match.select(:match_like).where(blue_team_id: team.id))
+    likes = []
+    args2.each do |match|
+      likes << match[:match_like]
+    end
+    avg_likes = (likes.sum / matches)
+    hash = {}
+    hash = {
+      team_id: team.id,
+      team_tag: team.team_tag,
+      team: team.team_name,
+      matches: matches,
+      avg_views: avg_views,
+      avg_likes: avg_likes
+    }
+    teams_array << hash
+  end
+  response = teams_array.sort_by { |hsh| hsh[:avg_views]}.last(3).reverse
+end
+
 def top_avg_chart(data)
   response = {}
   Team.all.each do |team|
@@ -39,18 +69,19 @@ def banner_infos_team(id)
   response
 end
 
-def last_5(id)
-  response = {}
+def last_5_matches(id)
+  response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
-
-  var.each do |match|
-    date = match.match_date.to_formatted_s(:rfc822)
-    response[date] = match.match_view
+  var.each_with_index do |match, i|
+    array = []
+    array << "##{5-i} | #{match.match_date.to_formatted_s(:rfc822)}"
+    array << match.match_view
+    response << array
   end
   response
 end
 
-def top_5(id)
+def top_5_matches(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_view}.last(5)
 
@@ -63,7 +94,7 @@ def top_5(id)
       team_blue: Team.find(match.blue_team_id),
       team_red: Team.find(match.red_team_id),
       views: match.match_view,
-      date: match.match_date,
+      date: match.match_date.to_formatted_s(:rfc822),
     }
   end
   response.sort_by { |e| e[:views] }.reverse

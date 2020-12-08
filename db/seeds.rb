@@ -77,7 +77,7 @@ p_fur = [
 ]
 p_itz = [ 
   ['rodrigo', 'tay'],
-  ['yuri', 'yupps'],
+  ['ygor', 'redbert'],
   ['diogo', 'shini'],
   ['bruno', 'envy'],
   ['micael', 'micao']
