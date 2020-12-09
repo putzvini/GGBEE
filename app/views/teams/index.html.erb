@@ -6,7 +6,7 @@
       <% @teams.each do |team| %>
         <div class="carousel_card">
           <div>
-          <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
+          <%= link_to image_tag( "team_rounded/#{team.team_tag}-rounded.png"), team_path(team), class: "team-logo-img" %>
           <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
@@ -39,7 +39,7 @@
 <div class="container p-4">
   <div class="mb-5" id="top-audience-teams">
     <h2>Top Teams in Avg. Audience</h2>
-    <p><strong>Avg. viewers per game, seasons 2019 and 2020</strong></p>
+    <p><strong>Avg. viewers per game since season 2019</strong></p>
     <br>
     <%= column_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
@@ -55,7 +55,7 @@
 <div class="container p-4">
   <div class="mb-5" id="top-like-teams">
     <h2>Top Teams in Video Likes</h2>
-    <p><strong>Avg. YouTube likes per game, seasons 2019 and 2020</strong></p>
+    <p><strong>Avg. YouTube likes per game since season 2019</strong></p>
     <br>
     <%= column_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
