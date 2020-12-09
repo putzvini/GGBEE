@@ -25,11 +25,11 @@
         </div>
         <div class="d-flex justify-content-around ml-4 pl-4">
           <ul class="list-group list-group-horizontal" style="list-style-type: none;">
-            <li><%= link_to "", "https://twitter.com/", target: "_blank", class: "fab fa-twitter fa-2x ml-4 mr-3", style:"background-color:transparent; color:white; text-decoration:none" %></li>
-            <li><%= link_to "", "https://twitch.com/", target: "_blank", class: "fab fa-twitch fa-2x ml-3 mr-3", style:"background-color:transparent; color:white; text-decoration:none"%></li>
-            <li><%= link_to "", "https://instagram.com/", target: "_blank", class: "fab fa-instagram fa-2x ml-3 mr-3", style:"background-color:transparent; color:white; text-decoration:none"%></li>
-            <li><%= link_to "", "https://youtube.com/", target: "_blank", class: "fab fa-youtube fa-2x ml-3 mr-3", style:"background-color:transparent; color:white; text-decoration:none"%></li>
-            <li><%= link_to "", "https://facebook.com/", target: "_blank", class: "fab fa-facebook fa-2x ml-3 mr-3", style:"background-color:transparent; color:white; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_twitter}", target: "_blank", class: "fab fa-twitter fa-2x ml-4 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none" %></li>
+            <li><%= link_to "", "#{@team.team_twitch}", target: "_blank", class: "fab fa-twitch fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_ig}", target: "_blank", class: "fab fa-instagram fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_youtube}", target: "_blank", class: "fab fa-youtube fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_fb}", target: "_blank", class: "fab fa-facebook fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
           </ul>
         </div>
       </div>
@@ -87,7 +87,7 @@
     <h2>Last 5 Matches Audiences</h2>
     <p><strong>Views in Youtube match videos</strong></p>
     <br>
-    <%= bar_chart @last_5_matches.map , thousands: ",", colors: ["#72BFC9", "white"] %>
+    <%= bar_chart @last_5_matches.map , thousands: ",", colors: ["#{@team.team_color}", "white"] %>
   </div>
 
   <br>
