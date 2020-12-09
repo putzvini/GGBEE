@@ -1,26 +1,27 @@
 .footer {
   background: #1D2020;
+  color: rgba(255,255,255,0.3);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  width: 100%;
-  color: rgba(255,255,255,0.3);
-
 }
 
 .footer-links {
-  display: flex;
-  align-items: center;
+    display: flex;
+    margin: 0 auto;
 }
+
+
 .footer-links a {
   color: black;
-  opacity: 0.15;
+  opacity: 0.3;
   text-decoration: none;
   font-size: 20px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 1;
 }
