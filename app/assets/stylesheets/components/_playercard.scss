@@ -60,6 +60,20 @@
     transition: all linear 0.25s;
 }
 
+.profile-card-2 .profile-icons {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: rgba(255,255,255,1);
+    transition: all linear 0.25s;
+    filter: transparecy(100%);
+
+}
+
+.profile-card-2 .profile-icons .fa {
+    margin: 5px;
+}
+
 .profile-card-2:hover img {
     filter: grayscale(100%);
 }
@@ -70,5 +84,10 @@
 
 .profile-card-2:hover .profile-username {
     bottom: 30px;
+}
+
+.profile-card-2:hover .profile-icons {
+    right: 40px;
+    color: rgba(255,255,255,1);
 }
 
