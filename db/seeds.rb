@@ -294,6 +294,7 @@ def seed_db(array)
            )
 
     puts "Cast date #{cast.cast_date} created"
+    sleep(1)
 
     hash[:matches].each do |match|
       match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
@@ -313,6 +314,7 @@ def seed_db(array)
                     cast_id: cast.id
       )
       puts "Match created!"
+      sleep(1)
     end
   end
 end
