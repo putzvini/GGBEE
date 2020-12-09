@@ -2,20 +2,22 @@
   background-size: cover;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
   text-align: center;
-  height: 150px;
+  height: 170px;
+  margin-top: 40px;
 }
 
 .dividers h1 {
   font-family: 'lato';
   position: relative; /* for pseudos */
   color: black;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 400;
   margin: 0;
   padding: 40px;
   margin:auto;
   vertical-align: middle;
   left: 150px;
+  bottom: 10px;
 }
 
 .hero {
@@ -27,6 +29,6 @@
 
 .hero2 {
   position: relative;
-  bottom: 70px;
-  height: 300px;
+  bottom: 183px;
+  height: 370px;
 }

@@ -66,6 +66,12 @@
   vertical-align: middle;
 }
 
+#split-carousel p {
+  display: unset;
+  position: absolute;
+  margin-top: -10px;
+}
+
 #team-carousel p {
   display: unset;
   position: absolute;
