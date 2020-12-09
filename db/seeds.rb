@@ -10,7 +10,8 @@ cnb = Team.create!(team_name: "cnb",
       team_twitch: "https://www.twitch.tv/team/cnb",
       team_youtube: "https://www.youtube.com/user/CNBeSc",
       team_ig: "https://www.instagram.com/cnbesc/",
-      team_fb: "https://www.facebook.com/CNB.eSc"
+      team_fb: "https://www.facebook.com/CNB.eSc",
+      team_cup: 0
       )
 fla = Team.create!(team_name: "flamengo",
       team_long_name: "flamengo e-sports",
@@ -20,7 +21,8 @@ fla = Team.create!(team_name: "flamengo",
       team_twitch: "https://www.twitch.tv/flaesports",
       team_youtube: "https://www.youtube.com/channel/UCqN_gtT3fqdn4KXdLLSqaHQ",
       team_ig: "https://www.instagram.com/flaesports/",
-      team_fb: "https://www.facebook.com/flaesportsoficial"
+      team_fb: "https://www.facebook.com/flaesportsoficial",
+      team_cup: 1
       )
 fur = Team.create!(team_name: "furia",
       team_long_name: "furia e-sports",
@@ -30,7 +32,8 @@ fur = Team.create!(team_name: "furia",
       team_twitch: "https://www.twitch.tv/furiatv",
       team_youtube: "https://www.youtube.com/channel/UCE4elIT7DqDv545IA71feHg",
       team_ig: "https://www.instagram.com/furiagg/",
-      team_fb: "https://www.facebook.com/furiagg"
+      team_fb: "https://www.facebook.com/furiagg",
+      team_cup: 0
       )
 itz = Team.create!(team_name: "intz",
       team_long_name: "intz",
@@ -40,7 +43,8 @@ itz = Team.create!(team_name: "intz",
       team_twitch: "https://www.twitch.tv/intzesports",
       team_youtube: "https://www.youtube.com/user/INTZeSports",
       team_ig: "https://www.instagram.com/intzesports/",
-      team_fb: "https://www.facebook.com/INTZeSports"
+      team_fb: "https://www.facebook.com/INTZeSports",
+      team_cup: 5
       )
 kbm = Team.create!(team_name: "kabum",
       team_long_name: "kabum e-sports",
@@ -50,7 +54,8 @@ kbm = Team.create!(team_name: "kabum",
       team_twitch: "https://www.twitch.tv/kabumcombr",
       team_youtube: "https://www.youtube.com/user/kabumesports",
       team_ig: "https://www.instagram.com/kabumesports/",
-      team_fb: "https://www.facebook.com/kabumesports"
+      team_fb: "https://www.facebook.com/kabumesports",
+      team_cup: 4
       )
 png = Team.create!(team_name: "pain",
       team_long_name: "pain gaming",
@@ -60,7 +65,8 @@ png = Team.create!(team_name: "pain",
       team_twitch: "https://www.twitch.tv/paingamingbr",
       team_youtube: "https://www.youtube.com/user/paingamingg",
       team_ig: "https://www.instagram.com/paingamingbr",
-      team_fb: "https://www.facebook.com/paingamingbr"
+      team_fb: "https://www.facebook.com/paingamingbr",
+      team_cup: 2
       )
 prg = Team.create!(team_name: "prodigy",
       team_long_name: "prodigy e-sports",
@@ -70,7 +76,8 @@ prg = Team.create!(team_name: "prodigy",
       team_twitch: "https://www.twitch.tv/voraxnow",
       team_youtube: "https://www.youtube.com/channel/UCI6TQbIe4HUYX0VboOwq_zg",
       team_ig: "https://www.instagram.com/voraxgg/",
-      team_fb: "https://www.facebook.com/Voraxgg"
+      team_fb: "https://www.facebook.com/Voraxgg",
+      team_cup: 0
       )
 rdp = Team.create!(team_name: "redemption",
       team_long_name: "redemption e-sports",
@@ -80,7 +87,8 @@ rdp = Team.create!(team_name: "redemption",
       team_twitch: "",
       team_youtube: "https://www.youtube.com/channel/UCBT-YOldSYUi58S5dY7VXug",
       team_ig: "https://www.instagram.com/redemptionpoa/",
-      team_fb: "https://www.facebook.com/RedemptionPOA"
+      team_fb: "https://www.facebook.com/RedemptionPOA",
+      team_cup: 0
       )
 san = Team.create!(team_name: "santos",
       team_long_name: "santos hotforex",
@@ -90,7 +98,8 @@ san = Team.create!(team_name: "santos",
       team_twitch: "https://www.twitch.tv/santosfcesports",
       team_youtube: "https://www.youtube.com/channel/UCsG0IDClXU_8N6fucOIyWKg",
       team_ig: "https://www.instagram.com/santosfcesports/",
-      team_fb: "https://www.facebook.com/santosfcesports"
+      team_fb: "https://www.facebook.com/santosfcesports",
+      team_cup: 0
       )
 one = Team.create!(team_name: "team one",
       team_long_name: "team one e-sports",
@@ -100,7 +109,8 @@ one = Team.create!(team_name: "team one",
       team_twitch: "https://www.twitch.tv/teamoneesports",
       team_youtube: "https://www.youtube.com/channel/UCllZP9SVGLLcXLCoWamltNQ",
       team_ig: "https://www.instagram.com/teamoneesports/",
-      team_fb: "https://www.facebook.com/teamoneesports"
+      team_fb: "https://www.facebook.com/teamoneesports",
+      team_cup: 1
       )
 up = Team.create!(team_name: "uppercut",
       team_long_name: "uppercut e-sports",
@@ -110,7 +120,8 @@ up = Team.create!(team_name: "uppercut",
       team_twitch: "",
       team_youtube: "https://www.youtube.com/channel/UCn4kn64xWiVNeBGLwyZQoAA",
       team_ig: "https://www.instagram.com/uppercutesports/?hl=pt-br",
-      team_fb: "https://www.facebook.com/Uppercutesports"
+      team_fb: "https://www.facebook.com/Uppercutesports",
+      team_cup: 0
       )
 vk = Team.create!(team_name: "keyd",
       team_long_name: "vivo keyd",
@@ -120,7 +131,8 @@ vk = Team.create!(team_name: "keyd",
       team_twitch: "https://www.twitch.tv/vivokeyd",
       team_youtube: "https://www.youtube.com/user/KeydTeam",
       team_ig: "https://www.instagram.com/vivokeyd/",
-      team_fb: "https://www.facebook.com/vivokeyd"
+      team_fb: "https://www.facebook.com/vivokeyd",
+      team_cup: 1
       )
 
 # seed for players table
