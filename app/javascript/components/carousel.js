@@ -1,7 +1,7 @@
 const carousel = () => {
   const slider = tns({
       container: '.teams-carrousel',
-      items: 7,
+      items: 9,
       slideBy: 'page',
       nav: false,
       rewind: true,

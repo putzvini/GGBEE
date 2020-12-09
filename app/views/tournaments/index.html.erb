@@ -52,7 +52,7 @@
         </div>
         <div class="card">
           <h4><%= @avg_time[:avg_time] %></h4>
-          <p>Avg. Cast Time (hrs.)</p>
+          <p>Avg. Cast Time</p>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@
     <% @teams.each do |team| %>
       <div class="carousel_card">
         <div>
-          <%= link_to image_tag( "#{team.team_tag}-logo.png"), team_path(team), class: "team-logo-img" %>
+          <%= link_to image_tag( "team_rounded/#{team.team_tag}-rounded.png"), team_path(team), class: "team-logo-img" %>
           <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
         </div>
       </div>
@@ -99,6 +99,7 @@
   <div class="mb-5" id="audience-chart">
     <h2>CBLoL Historical Audience</h2>
     <p><strong>Total viewers round by round, seasons 2019 to 2020</strong></p>
+    <br>
     <%= area_chart @audience, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"  %>
   </div>
 <br>
