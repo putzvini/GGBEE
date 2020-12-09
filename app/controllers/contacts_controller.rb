@@ -1,18 +1,13 @@
-class ContactsController < ApplicationController
-  def index
-    @contact = Contact.new(params[:name])
-      @contact.request = request
-      if @contact.deliver
-        flash.now[:notice] = 'Thank you for your message!'
-      else
-        render :new
-      end
-    rescue ScriptError
-      flash[:error] = 'Sorry, this message appears to be spam and was not delivered.'
-    end
+class ContactController < ApplicationController
+  def create
+    @contact = current_user.contacts.build(contact_params)
 
-  private
-    def payment_params
-    params.require(:contact).permit(:name, :email, :message)
+    if @contact.save
+      mail = RestaurantMailer.with(restaurant: @contact).create_confirmation
+      mail.deliver_now
+      redirect_to contact_path(@contact)
+    else
+      render :new
+    end
   end
 end

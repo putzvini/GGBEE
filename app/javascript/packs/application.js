@@ -28,7 +28,6 @@ import "bootstrap";
 // import { tns } from "./node_modules/tiny-slider/src/tiny-slider";
 import { carousel } from "../components/carousel";
 
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
