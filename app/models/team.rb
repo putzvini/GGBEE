@@ -69,7 +69,7 @@ def banner_infos_team(id)
   response
 end
 
-def last_5_matches(id)
+def last_5(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_date}.last(5)
   var.each_with_index do |match, i|
@@ -81,7 +81,7 @@ def last_5_matches(id)
   response
 end
 
-def top_5_matches(id)
+def top_5(id)
   response = []
   var = Match.where(red_team_id: id).or(Match.where(blue_team_id: id)).sort_by{|match| match.match_view}.last(5)
 
@@ -89,15 +89,17 @@ def top_5_matches(id)
     cast = Cast.find(match.cast_id)
     round = Round.find(cast.round_id)
     tournament = Tournament.find(round.tournament_id)
-    response << {
+    hash = {}
+    hash = {
       tournament: "CBLOL #{tournament.season} - Split #{tournament.split}",
       team_blue: Team.find(match.blue_team_id),
       team_red: Team.find(match.red_team_id),
       views: match.match_view,
       date: match.match_date.to_formatted_s(:rfc822)
     }
+    response << hash
   end
-  response = response.sort_by { |e| e[:views] }.reverse
+  return response.sort_by { |e| e[:views] }.reverse
 end
 
 def players(id)
