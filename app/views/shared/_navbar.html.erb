@@ -1,19 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to tournaments_path, class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "GGBee_logo.png" %>
     <% end %>
     <ul class="navbar-nav">
+
         <li class="nav-item">
-          <%= link_to "Tournaments", tournaments_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
+          <%= link_to "Tournaments", root_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
         </li>
+
         <li class="nav-item">
           <%= link_to "Teams", teams_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
         </li>
+
         <li class="nav-item">
-          <%= link_to "Contato", teams_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
+          <%= link_to "Abouts", abouts_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
         </li>
+
         <li class="nav-item">
-          <%= link_to "Sobre", teams_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
+          <%= link_to "Contacts", contacts_path, class: "nav-link", style: "color: #72BFC9; font-weight: 700;" %>
         </li>
     </ul>
 </div>

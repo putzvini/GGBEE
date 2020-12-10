@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  #skip_before_action :authenticate_user!
   def index
     @tournaments = Tournament.all
     @teams = Team.all
@@ -7,7 +8,6 @@ class TournamentsController < ApplicationController
     @banner_infos = banner_infos_tournaments
     @avg_time = avg_time
     @donut = donut
-    
   end
 
   def show
