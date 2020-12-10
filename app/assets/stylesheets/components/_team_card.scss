@@ -98,3 +98,12 @@
 .split-logo-img img:hover {
   filter: grayscale(100%);
 }
+
+.trofeus {
+  margin: 0px 3px;
+  & > * {
+    margin: 0px 3px;
+    font-size: 22px;
+  }
+}
+
