@@ -1,120 +1,67 @@
-<div id="myCarousel" class="carousel slide carousel-fade mb-5" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner_back_1.png' %>); background-size: cover ">
-            <div class="mask flex-center">
-                <div class="container">
-                    <div class="row align-items-center" style="margin-top:60px">
-                        <div class="col-md-8 col-12 order-md-1 order-2">
-                            <h4 id="presentation">A <strong style="color:#72BFC9">GGBee</strong> conecta você com as principais métricas de stream do CBLOL.</h4>
-                            <p id="presentation2">Saiba tudo sobre o campeonato nacional de e-sports mais assistido do Brasil. </p> <br>
-                        </div>
-                    </div>
+<div align="center">
+    <div style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner_back_1.png' %>); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5); height: 300px; ">
+        <div class="mask flex-center">
+            <div class="container" style="padding-top: 80px">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <h3>GGBee is a service for collecting, organizing and analyzing data <br> on the competitive LoL scenario in Brazil.</h3>
+                    <h3>Our services are unbiased and help professionals <br> gain insights and a clearer view of market trends.</h3>
                 </div>
             </div>
         </div>
-        <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1732&q=80)">
-            <div class="mask flex-center">
-                <div class="container">
-                    <div class="row align-items-center" style="margin-top:60px">
-                        <div class="col-md-8 col-12 order-md-1 order-2">
-                            <h4>Quais <strong style="color:#72BFC9">times</strong> geram mais engajamento?</h4>
-                            <p>A partir de dados do YouTube, você poderá comparar time a time, quais têm mais engajamento nos streams do CBLOL.</p> <br> <%= link_to 'VER AGORA', teams_path %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div>
 </div>
 
-<div class="container p-4">
 
-  <div class="row mb-3">
-    <div class="col-8">
-      <br>
-
-      <div class="info_cards_grid">
-        <br>
-
-          <div class="card">
-            <h1><strong>REAL DATA</strong></h1>
-
-            <p> We collect actual data from CBLoL broadcasts and videos on YouTube.
-                The data is processed between 7 and 10 days after the games are played,
-                which corresponds to the peak of views and interactions. </p>
-           </div>
-
-      </div>
-    </div>
-    <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
+<div class="container p-5">
+  <div class="row" align="left">
+    <div class="col-2"><i class="fas fa-database d-flex justify-content-center align-items-center" style="font-size: 100px"></i></div>
+    <div class="col-10">
+      <h1>Real Data</h1>
+      <p> We collect actual data from CBLoL broadcasts and videos on YouTube.
+          The data is processed between 7 and 10 days after the games are played,
+          which corresponds to the peak of views and interactions. </p>
+      <hr style="border-color: #72BFC9; border-width: 2px 0"/>
     </div>
   </div>
+<br>
+  <div class="row" align="left">
+    <div class="col-2"><i class="fas fa-chart-pie d-flex justify-content-center align-items-center" style="font-size: 100px"></i></div>
+    <div class="col-10">
+      <h1>Informative infographics</h1>
 
-   <div class="row mb-3">
-    <div class="col-8">
-      <br>
+      <p> We organize and make available the information collected in informative infographics,
+          which include the exact number of views
+          user interactions (like likes, dislikes and comments), hours watched... </p>
 
-      <div class="info_cards_grid">
-        <br>
-
-          <div class="card">
-            <h1><strong>Informative infographics</strong></h1>
-
-            <p> We organize and make available the information collected in informative infographics,
-                which include the exact number of views
-                user interactions (like likes, dislikes and comments), hours watched ... </p>
-           </div>
-
-      </div>
-    </div>
-    <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
+      <hr style="border-color: #72BFC9; border-width: 2px 0"/>
     </div>
   </div>
+<br>
+ <div class="row" align="left">
+    <div class="col-2"><i class="fas fa-trophy d-flex justify-content-center align-items-center" style="font-size: 100px"></i></div>
+    <div class="col-10">
+      <h1>The competition, teams and players</h1>
 
-  <div class="row mb-3">
-    <div class="col-8">
-      <br>
+      <p>We provide data on aspects of the tournament that interest those who work with LoL on a daily basis.
+        Insights about the competition and its reach, market trends, the best teams and players,
+        all of this you find here.</p>
 
-        <div class="info_cards_grid">
-          <br>
-
-            <div class="card">
-              <h1><strong>The competition, teams and players</strong></h1>
-
-              <p>We provide data on aspects of the tournament that interest those who work with LoL on a daily basis.
-                Insights about the competition and its reach, market trends, the best teams and players,
-                all of this you find here.</p>
-             </div>
-
-        </div>
+        <hr style="border-color: #72BFC9; border-width: 2px 0"/>
     </div>
-    <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
+ </div>
+<br>
+<div class="row" align="left">
+    <div class="col-2"><i class="fas fa-bullhorn d-flex justify-content-center align-items-center" style="font-size: 100px"></i></div>
+    <div class="col-10">
+      <h1>Share and Support</h1>
+
+      <p>League of Legends grows every day in Brazil. As this happens, the need for data and analysis that helps to understand this market with enormous potential also increases.
+        Share this content and support the national competitive LoL scenario.</p>
+
+      <hr style="border-color: #72BFC9; border-width: 2px 0"/>
     </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-8">
-      <br>
-
-        <div class="info_cards_grid">
-          <br>
-
-            <div class="card">
-              <h1><strong>Compartilhe e contribua</strong></h1>
-
-              <p>LoL grows every day in Brazil. As this happens, the need for data and analysis that helps to understand this market with enormous potential also increases.
-                Share this content and support the national competitive LoL scenario.</p>
-             </div>
-
-        </div>
-    </div>
-    <div class="col-4">
-      <%= image_tag 'cblol_cup.png', class: "cup-img" %>
-    </div>
-  </div>
-
+ </div>
 
 </div>
+
+
