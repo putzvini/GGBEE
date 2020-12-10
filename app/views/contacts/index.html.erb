@@ -1,0 +1,41 @@
+<div id="myCarousel" class="carousel slide carousel-fade mb-5" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner_back_1.png' %>); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5); ">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center" style="margin-top:60px">
+                        <div class="col-md-8 col-12 order-md-1 order-2">
+                            <h4 id="presentation"><strong style="color:#72BFC9">GGBee</strong> conects you with main streaming metrics of LoL's Brazilian Championship</h4>
+                            <p id="presentation2">Get to know all about views, comments, likes and much more </p> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(<%= image_path 'banner_back_2.png' %>); background-size: cover; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center" style="margin-top:60px">
+                        <div class="col-md-8 col-12 order-md-1 order-2">
+                            <h4>Which <strong style="color:#72BFC9">team</strong> better engages with its audience?</h4>
+                            <p>We gather, organize and process YouTube data so you can compare teams</p> <br> <%= link_to 'CHECK IT', teams_path %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+</div>
+
+<div class="container p-4" align= "center" >
+  <div style="margin: 0px 300px 0px 300px">
+      <h2>Partnerships and Suggestions</h2>
+        <hr style="border-color: #72BFC9; border-width: 2px 0; padding-bottom: 15px">
+      <p> We are always open to new partnerships.</p>
+      <p> We provide detailed data on competitions, teams and various other relevant statistics to anyone who works with or is interested in CBLoL.</p>
+      <p> If there is anything else you would like to see on our website, a specific e-sports championship for example. Let us know!</p>
+    <div id="contact" style="padding-top: 15px">
+      <%= render 'contact_form' %>
+    </div>
+  </div>
+</div>
