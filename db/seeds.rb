@@ -4,139 +4,223 @@ puts "Creating teams"
 # team array = name, longa_name, tag and photo path
 cnb = Team.create!(team_name: "cnb",
       team_long_name: "cnb e-sports",
-      team_tag: "cnb"
+      team_tag: "cnb",
+      team_color: "#1D74BA",
+      team_twitter: "https://twitter.com/cnbesc",
+      team_twitch: "https://www.twitch.tv/team/cnb",
+      team_youtube: "https://www.youtube.com/user/CNBeSc",
+      team_ig: "https://www.instagram.com/cnbesc/",
+      team_fb: "https://www.facebook.com/CNB.eSc",
+      team_cup: 0
       )
 fla = Team.create!(team_name: "flamengo",
       team_long_name: "flamengo e-sports",
-      team_tag: "fla"
+      team_tag: "fla",
+      team_color: "#BA3C2E",
+      team_twitter: "https://twitter.com/flaesports",
+      team_twitch: "https://www.twitch.tv/flaesports",
+      team_youtube: "https://www.youtube.com/channel/UCqN_gtT3fqdn4KXdLLSqaHQ",
+      team_ig: "https://www.instagram.com/flaesports/",
+      team_fb: "https://www.facebook.com/flaesportsoficial",
+      team_cup: 1
       )
 fur = Team.create!(team_name: "furia",
       team_long_name: "furia e-sports",
-      team_tag: "fur"
+      team_tag: "fur",
+      team_color: "#FFFFFF",
+      team_twitter: "https://twitter.com/furia",
+      team_twitch: "https://www.twitch.tv/furiatv",
+      team_youtube: "https://www.youtube.com/channel/UCE4elIT7DqDv545IA71feHg",
+      team_ig: "https://www.instagram.com/furiagg/",
+      team_fb: "https://www.facebook.com/furiagg",
+      team_cup: 0
       )
 itz = Team.create!(team_name: "intz",
       team_long_name: "intz",
-      team_tag: "itz"
+      team_tag: "itz",
+      team_color: "#0D7293",
+      team_twitter: "https://twitter.com/INTZ",
+      team_twitch: "https://www.twitch.tv/intzesports",
+      team_youtube: "https://www.youtube.com/user/INTZeSports",
+      team_ig: "https://www.instagram.com/intzesports/",
+      team_fb: "https://www.facebook.com/INTZeSports",
+      team_cup: 5
       )
 kbm = Team.create!(team_name: "kabum",
       team_long_name: "kabum e-sports",
-      team_tag: "kbm"
+      team_tag: "kbm",
+      team_color: "#F24118",
+      team_twitter: "https://twitter.com/kabumesports",
+      team_twitch: "https://www.twitch.tv/kabumcombr",
+      team_youtube: "https://www.youtube.com/user/kabumesports",
+      team_ig: "https://www.instagram.com/kabumesports/",
+      team_fb: "https://www.facebook.com/kabumesports",
+      team_cup: 4
       )
 png = Team.create!(team_name: "pain",
       team_long_name: "pain gaming",
-      team_tag: "png"
+      team_tag: "png",
+      team_color: "#EE2C4A",
+      team_twitter: "https://twitter.com/paiNGamingBR",
+      team_twitch: "https://www.twitch.tv/paingamingbr",
+      team_youtube: "https://www.youtube.com/user/paingamingg",
+      team_ig: "https://www.instagram.com/paingamingbr",
+      team_fb: "https://www.facebook.com/paingamingbr",
+      team_cup: 2
       )
 prg = Team.create!(team_name: "prodigy",
       team_long_name: "prodigy e-sports",
-      team_tag: "prg"
+      team_tag: "prg",
+      team_color: "#EC008C",
+      team_twitter: "https://twitter.com/VoraxGG",
+      team_twitch: "https://www.twitch.tv/voraxnow",
+      team_youtube: "https://www.youtube.com/channel/UCI6TQbIe4HUYX0VboOwq_zg",
+      team_ig: "https://www.instagram.com/voraxgg/",
+      team_fb: "https://www.facebook.com/Voraxgg",
+      team_cup: 0
       )
 rdp = Team.create!(team_name: "redemption",
       team_long_name: "redemption e-sports",
-      team_tag: "rdp"
+      team_tag: "rdp",
+      team_color: "#148852",
+      team_twitter: "https://twitter.com/RedemptionPOA",
+      team_twitch: "",
+      team_youtube: "https://www.youtube.com/channel/UCBT-YOldSYUi58S5dY7VXug",
+      team_ig: "https://www.instagram.com/redemptionpoa/",
+      team_fb: "https://www.facebook.com/RedemptionPOA",
+      team_cup: 0
       )
 san = Team.create!(team_name: "santos",
       team_long_name: "santos hotforex",
-      team_tag: "san"
+      team_tag: "san",
+      team_color: "#EFC01F",
+      team_twitter: "https://twitter.com/SantosFCeSports",
+      team_twitch: "https://www.twitch.tv/santosfcesports",
+      team_youtube: "https://www.youtube.com/channel/UCsG0IDClXU_8N6fucOIyWKg",
+      team_ig: "https://www.instagram.com/santosfcesports/",
+      team_fb: "https://www.facebook.com/santosfcesports",
+      team_cup: 0
       )
 one = Team.create!(team_name: "team one",
       team_long_name: "team one e-sports",
-      team_tag: "one"
+      team_tag: "one",
+      team_color: "#D1C09C",
+      team_twitter: "https://twitter.com/teamoneesports",
+      team_twitch: "https://www.twitch.tv/teamoneesports",
+      team_youtube: "https://www.youtube.com/channel/UCllZP9SVGLLcXLCoWamltNQ",
+      team_ig: "https://www.instagram.com/teamoneesports/",
+      team_fb: "https://www.facebook.com/teamoneesports",
+      team_cup: 1
       )
 up = Team.create!(team_name: "uppercut",
       team_long_name: "uppercut e-sports",
-      team_tag: "up"
+      team_tag: "up",
+      team_color: "#FF9016",
+      team_twitter: "",
+      team_twitch: "",
+      team_youtube: "https://www.youtube.com/channel/UCn4kn64xWiVNeBGLwyZQoAA",
+      team_ig: "https://www.instagram.com/uppercutesports/?hl=pt-br",
+      team_fb: "https://www.facebook.com/Uppercutesports",
+      team_cup: 0
       )
 vk = Team.create!(team_name: "keyd",
       team_long_name: "vivo keyd",
-      team_tag: "vk"
+      team_tag: "vk",
+      team_color: "#633D90",
+      team_twitter: "https://twitter.com/VivoKeyd",
+      team_twitch: "https://www.twitch.tv/vivokeyd",
+      team_youtube: "https://www.youtube.com/user/KeydTeam",
+      team_ig: "https://www.instagram.com/vivokeyd/",
+      team_fb: "https://www.facebook.com/vivokeyd",
+      team_cup: 1
       )
 
 # seed for players table
 puts "Creating players"
 
 p_cnb = [
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player']
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""]
  ]
 p_fla = [
-  ["felipe", "bankai" ],
-  ['filipe', 'ranger'],
-  ['bruno','goku'],
-  ['han','luci'],
-  ['ju','bvoy']
+  ["felipe", "bankai", "https://twitter.com/bankailol1"],
+  ['filipe', 'ranger', "https://twitter.com/rangerlol1"],
+  ['bruno','goku', "https://twitter.com/gokucplol"],
+  ['han','luci', "https://twitter.com/luciii_lol"],
+  ['ju','bvoy', "https://twitter.com/bvoylol"]
 ]
 p_fur = [ 
-  ['william', 'tyrin'],
-  ['luis', 'st1ing'],
-  ['ruan', 'anyyy'],
-  ['joao', 'alternative'],
-  ['yan', 'damage']
+  ['william', 'tyrin', "https://twitter.com/tyrinlol"],
+  ['luis', 'st1ing', "https://twitter.com/stingksl"],
+  ['ruan', 'anyyy', "https://twitter.com/anyyylol"],
+  ['joao', 'alternative', "https://twitter.com/AlternativeX10"],
+  ['yan', 'damage', "https://twitter.com/Damagelol1"]
 ]
 p_itz = [ 
-  ['rodrigo', 'tay'],
-  ['ygor', 'redbert'],
-  ['diogo', 'shini'],
-  ['bruno', 'envy'],
-  ['micael', 'micao']
+  ['rodrigo', 'tay', "https://twitter.com/taylolxd"],
+  ['ygor', 'redbert', "https://twitter.com/redbertt"],
+  ['diogo', 'shini', "https://twitter.com/Shinimon14"],
+  ['bruno', 'envy', "https://twitter.com/envylool"],
+  ['micael', 'micao', "https://twitter.com/micaOlol"]
 ]
 p_kbm = [ 
-  ['lee', 'parang'],
-  ['na', 'wiz'],
-  ['arthur', 'tutsz'],
-  ['igor', 'dudstheboy'],
-  ['denilson', 'ceos']
+  ['lee', 'parang', "https://twitter.com/ParangLOL"],
+  ['na', 'wiz', "https://twitter.com/Wiz_lol_"],
+  ['arthur', 'tutsz', "https://twitter.com/tutszlol"],
+  ['igor', 'dudstheboy', "https://twitter.com/dudstheboy"],
+  ['denilson', 'ceos', "https://twitter.com/Ceoslol"]
 ]
 p_png = [ 
-  ['leonardo', 'robo'],
-  ['marcos', 'cariok'],
-  ['thaigo', 'tinows'],
-  ['felipe', 'brtt'],
-  ['eidi', 'esa']
+  ['leonardo', 'robo', "https://twitter.com/robolol1"],
+  ['marcos', 'cariok', "https://twitter.com/Carioklol"],
+  ['thaigo', 'tinows', "https://twitter.com/Tinowns"],
+  ['felipe', 'brtt', "https://twitter.com/brttOficial"],
+  ['eidi', 'esa', "https://twitter.com/esACarry"]
 ]
 p_prg = [ 
-  ['francisco', 'fnb'],
-  ['yan', 'yampi'],
-  ['matheus', 'dynquedo'],
-  ['humberto', 'garo'],
-  ['willyam', 'wos']
+  ['francisco', 'fnb', "https://twitter.com/fNblol"],
+  ['yan', 'yampi', "https://twitter.com/yampilol"],
+  ['matheus', 'dynquedo', "https://twitter.com/dynquedo1"],
+  ['humberto', 'garo', "https://twitter.com/garolol1"],
+  ['willyam', 'wos', "https://twitter.com/Woswoslol"]
 ]
 p_rdp = [ 
-  ['bruno', 'glow'],
-  ['marcos', 'krastyel'],
-  ['diego', 'sephis'],
-  ['alan', 'riva'],
-  ['emerson', 'bocajr']
+  ['bruno', 'glow', "https://twitter.com/Glowcore"],
+  ['marcos', 'krastyel', "https://twitter.com/Krastyel_"],
+  ['diego', 'sephis', "https://twitter.com/sephinho"],
+  ['alan', 'riva', "https://twitter.com/alanrivabene"],
+  ['emerson', 'bocajr', "https://twitter.com/bocajrlol"]
 ]
 p_san = [ 
-  ['park', 'jackpot'],
-  ['benjamin', 'hyoga'],
-  ['kim', 'rainbow'],
-  ['matheus', 'sarkis'],
-  ['gabriel', 'hawk']
+  ['park', 'jackpot', "https://twitter.com/loljackpot"],
+  ['benjamin', 'hyoga', "https://twitter.com/Hy0g4TM"],
+  ['kim', 'rainbow', "https://twitter.com/rainbowlol_sg"],
+  ['matheus', 'sarkis', "https://twitter.com/Sarkislol"],
+  ['gabriel', 'hawk', "https://twitter.com/hawklol_"]
 ]
 p_one = [ 
-  ['matheus', 'skybart'],
-  ['wyllian', 'wyll'],
-  ['bruno', 'brucer'],
-  ['pablo', 'pbo'],
-  ['gabriel', 'jojo']
+  ['matheus', 'skybart', "https://twitter.com/SkyBartLoL"],
+  ['wyllian', 'wyll', "https://twitter.com/astalol2"],
+  ['bruno', 'brucer', "https://twitter.com/brucerlol"],
+  ['pablo', 'pbo', "https://twitter.com/pbozinho"],
+  ['gabriel', 'jojo', "https://twitter.com/jojooolol"]
 ]
 p_up = [
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player'],
-  ['unknown', 'player']
-]
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""],
+  ['unknown', 'player', ""]
+ ]
 p_vk = [ 
-  ['leonardo', 'hidan'],
-  ['gustavo', 'minerva'],
-  ['julio', 'nosferus'],
-  ['augusto', 'klaus'],
-  ['gabriel', 'turtle']
+  ['leonardo', 'hidan', "https://twitter.com/hidan_vs"],
+  ['gustavo', 'minerva', "https://twitter.com/GustavoMinerva"],
+  ['julio', 'nosferus', "https://twitter.com/NOsFerus1"],
+  ['augusto', 'klaus', "https://twitter.com/klauslol1_"],
+  ['gabriel', 'turtle', "https://twitter.com/TurtleGabriel"]
 ]
 
 def seed_player(array, team)
@@ -144,6 +228,7 @@ def seed_player(array, team)
     Player.create!(
       player_name: p[0],
       player_nick: p[1],
+      player_twitter: p[2],
       team_id: team.id
     )
   end
@@ -209,6 +294,7 @@ def seed_db(array)
            )
 
     puts "Cast date #{cast.cast_date} created"
+    sleep(1)
 
     hash[:matches].each do |match|
       match_response = HTTParty.get("https://youtube.googleapis.com/youtube/v3/videos?id=#{match[:match_url]}&key=#{ENV['YOUTUBE_KEY']}&part=snippet, contentDetails, statistics")
@@ -228,6 +314,7 @@ def seed_db(array)
                     cast_id: cast.id
       )
       puts "Match created!"
+      sleep(1)
     end
   end
 end

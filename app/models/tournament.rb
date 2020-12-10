@@ -18,7 +18,7 @@ def past_splits_table
   champion = ['itz', 'fla', 'kbm', 'itz' ]
   Tournament.all.each_with_index do |t, i|
     hash = {}
-    hash[:tournament] = "CBLoL #{t.season} - Split #{t.split}"
+    hash[:tournament] = "#{t.season} - Split #{t.split}"
     hash[:start_date] = Round.where(tournament_id: t.id).first[:round_date].to_formatted_s(:rfc822)
     hash[:end_date] = Round.where(tournament_id: t.id).last[:round_date].to_formatted_s(:rfc822)
     hash[:rounds] = Round.where(tournament_id: t.id).count

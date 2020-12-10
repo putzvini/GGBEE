@@ -6,18 +6,15 @@
       <% @teams.each do |team| %>
         <div class="carousel_card">
           <div>
-          <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+          <%= link_to image_tag( "team_rounded/#{team.team_tag}-rounded.png"), team_path(team), class: "team-logo-img" %>
           <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-
   <br>
-
-  <div class="contaier p-4">
-    <h2>Top 3 Teams</h2>
+  <h2>Top 3 Teams</h2>
     <p><strong>According to matches, avg views and avg likes per match since 2019</strong></p>
     <br>
       <div class="card-deck">
@@ -27,55 +24,39 @@
             <div class="card-body">
               <h2 class="card-title text-center"><%="#{i+1}º #{team[:team].capitalize}"%></h2>
               <hr style="border-color: #72BFC9; border-width: 2px 0"/>
-              <h4 class="card-text text-center"><%= team[:matches] %> matches</h4>
-              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %> avg. views</h4>
-              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %> likes per match </h4>
+              <h4 class="card-text text-center"><%= team[:matches] %> <span style="font-family: 'lato'; font-weight: 100">matches</span></h4>
+              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_views]) %><span style="font-family: 'lato'; font-weight: 100"> avg. views</span></h4>
+              <h4 class="card-text text-center"><%= number_with_delimiter(team[:avg_likes]) %><span style="font-family: 'lato'; font-weight: 100"> likes per match </span></h4>
               <br>
-              <%= link_to "#{team[:team].capitalize} page", team_path(team[:team_id]), class:"btn btn-outline-secondary btn-block" %>
+              <%= link_to "#{team[:team].capitalize} Page", team_path(team[:team_id]), class:"btn btn-outline-secondary btn-block" %>
             </div>
           </div>
         <% end %>
       </div>
   </div>
-
   <br>
 
-  <div class="mb-5" id="top-audience-teams">
+<div class="container p-4">
+  <div class="mb-5 mt-5" id="top-audience-teams">
     <h2>Top Teams in Avg. Audience</h2>
-    <p><strong>Avg. viwers per game, seasons 2019 and 2020</strong></p>
-    <%= line_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <p><strong>Avg. viewers per game since season 2019</strong></p>
+    <br>
+    <%= column_chart @top_audience_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
+</div>
 
-  <br>
+<div class= "dividers" style="background-image: url(<%= image_path 'stripe.png' %>); ">
+  <div class="row">
+    <div class="col-5"><h1>Considering CBLoL's last seasons, <strong>Flamengo is the most popular team</strong>, both in audience and viewers engagement. <strong>Pain Gaming comes second</strong> place, closing down on the leader.</h1></div>
+    <div class="col-7"><%= image_tag "heroes/rize.png", class: "hero" %></div>
+  </div>
+</div>
 
+<div class="container p-4">
   <div class="mb-5" id="top-like-teams">
     <h2>Top Teams in Video Likes</h2>
-    <p><strong>Avg. YouTube likes per game, seasons 2019 and 2020</strong></p>
-    <%= bar_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
+    <p><strong>Avg. YouTube likes per game since season 2019</strong></p>
+    <br>
+    <%= column_chart @top_likes_avg, thousands: ",", colors: ["#72BFC9", "white"], height: "450px"; %>
   </div>
-
-  <br>
-
-  <div id="top-comment-teams">
-    <h2>Top Teams in Video Comments</h2>
-    <p><strong>Avg. YouTube comments per game, seasons 2019 and 2020</strong></p>
-    <%= bar_chart @top_comment_avg, thousands: ",", colors: ["#72BFC9", "white"] %>
-  </div>
-
-  <%= timeline [
-  ["Washington", "1789-04-29", "1797-03-03"],
-  ["Adams", "1797-03-03", "1801-03-03"],
-  ["Jefferson", "1801-03-03", "1809-03-03"] ] %>
-
-  <pre><code>
-    Name, cat-A,cat-B , cat-C
-    Jan, 1, 2, 3
-    Feb, 4, 5, 6
-    Mar, 7, 8, 9
-  </code></pre>
-  <p><code>(@line)</code></p>
-
-
-  <br>
-
 </div>

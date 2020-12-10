@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_144005) do
+ActiveRecord::Schema.define(version: 2020_12_09_185029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_144005) do
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "player_twitter"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -72,6 +73,13 @@ ActiveRecord::Schema.define(version: 2020_12_04_144005) do
     t.string "team_tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "team_twitter"
+    t.string "team_twitch"
+    t.string "team_youtube"
+    t.string "team_ig"
+    t.string "team_fb"
+    t.integer "team_cup"
+    t.string "team_color"
   end
 
   create_table "tournaments", force: :cascade do |t|

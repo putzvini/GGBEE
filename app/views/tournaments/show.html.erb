@@ -1,14 +1,14 @@
 <div class="container p-4">
   <div class="row">
-    <div class="mb-4" id="split-carousel">
+    <div class="mb-2" id="split-carousel">
       <p>Past Splits</p>
       <br>
       <div class="split_carousel_cards_grid">
         <% @tournaments.each do |tournament| %>
           <div class="carousel_card pl-3" >
             <div>
-              <%= image_tag 'logo_cblol_blue.png', class: "team-logo-img" %>
-              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament)%>
+              <%= link_to image_tag('logo_cblol_blue.png'), tournament_path(tournament), class: "split-logo-img" %>
+              <%= link_to "#{tournament.season}-#{tournament.split}", tournament_path(tournament), class: "team-name"%>
             </div>
           </div>
       <% end %>
@@ -36,7 +36,7 @@
         </div>
         <div class="card">
           <h4><%= @banner[:matches] %></h4>
-          <p>Matches brodcasted</p>
+          <p>Matches broadcasted</p>
         </div>
         <div class="card">
           <h4><%= number_with_delimiter(@banner[:views]) %></h4>
@@ -55,32 +55,36 @@
   </div>
 
 
+
+
 <div class="container p-4">
 
-  <div class="mb-5" id="audience-chart">
+  <div class="mb-5 pb-5" id="audience-chart">
     <h2>Audience Round by Round</h2>
     <p><strong>Casting videos in Youtube</strong></p>
+    <br>
     <%= column_chart @round_views, thousands: ",", colors: ["#72BFC9", "white"] %>
   </div>
 
   <br>
 
-  <div class="row mt-5 mb-5">
-    <div class="blockquote-wrapper justify-content-around">
-      <div class="col-3"><%= image_tag 'heroes/leona.png', class: "hero-img" %></div>
-      <div class="col-9">
-        <div class="blockquote">
-          <h1>Every split has 2 types of videos: <span style="color:#ffffff">casts</span> and <span style="color:#ffffff">matches.</span> Usually, every cast video is composed of<span style="color:#ffffff"> 4 matches.</span></h1>
-        </div>
-      </div>
-    </div>
+</div>
+
+<div class= "dividers" style="background-image: url(<%= image_path 'stripe.png' %>); ">
+  <div class="row">
+    <div class="col-5"><h1>Large audiences are consistently observed at the finals, as expected. The 2020 season's 1st split is an exception in which 4th round had the most expectators, driven by <strong>FUR x FLA</strong> and <strong>PNG x RDP</strong></h1></div>
+    <div class="col-7"><%= image_tag "heroes/olaf.png", class: "hero2" %></div>
   </div>
+</div>
+
+<div class="container p-4">
 
 <br>
 
   <div id="top-audience-table">
     <h2>Top 5 Audiences</h2>
     <p><strong>Match videos in Youtube</strong></p>
+    <br>
     <table class="table table-dark" style="text-align: center">
         <thead>
           <tr>

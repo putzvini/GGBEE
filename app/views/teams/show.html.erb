@@ -1,11 +1,11 @@
 <div class="container p-4">
-  <div class="mb-4" id="team-carousel">
-    <p>Participating teams</p>
+  <div class="mb-3" id="team-carousel">
+    <p style="margin-top: 3px;">Participating teams</p>
     <div class="teams-carrousel">
       <% @teams.each do |team| %>
         <div class="carousel_card">
           <div>
-            <%= image_tag "#{team.team_tag}-logo.png", class: "team-logo-img" %>
+            <%= link_to image_tag( "team_rounded/#{team.team_tag}-rounded.png") ,team_path(team), class: "team-logo-img" %>
             <%= link_to team.team_name.titleize, team_path(team), class: "team-name"%>
           </div>
         </div>
@@ -19,7 +19,20 @@
       <%= image_tag "#{@team.team_tag}-logo.png", class: "team-logo-big" %>
     </div>
     <div class="col-8 p-4" id="info-card" style="color: white">
-      <h1><strong><%= @team.team_long_name.titleize %></strong></h1>
+      <div class="d-flex align-items-center">
+        <div>
+          <h1><strong><%= @team.team_long_name.titleize %></strong></h1>
+        </div>
+        <div class="d-flex justify-content-around ml-4 pl-4">
+          <ul class="list-group list-group-horizontal" style="list-style-type: none;">
+            <li><%= link_to "", "#{@team.team_twitter}", target: "_blank", class: "fab fa-twitter fa-2x ml-4 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none" %></li>
+            <li><%= link_to "", "#{@team.team_twitch}", target: "_blank", class: "fab fa-twitch fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_ig}", target: "_blank", class: "fab fa-instagram fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_youtube}", target: "_blank", class: "fab fa-youtube fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+            <li><%= link_to "", "#{@team.team_fb}", target: "_blank", class: "fab fa-facebook fa-2x ml-3 mr-3", style:"background-color:transparent; color:#{@team.team_color}; text-decoration:none"%></li>
+          </ul>
+        </div>
+      </div>
       <p>Data collected from matches videos on YouTube</p>
       <br>
       <div class="info_cards_grid">
@@ -53,9 +66,13 @@
 
 <div class="container p-4">
   <h2>Present Lineup</h2>
-  <div class="mt-5" id="player-card">
+  <div class="mt-3" id="player-card">
     <%  @players.each do |player| %>
-      <div class="profile-card-2" ><%= image_tag "players/#{player.player_nick}.png", class: "img img-responsive", alt: "Card image cap" %>
+      <div class="profile-card-2">
+          <%= link_to "#{player.player_twitter}", target: "_blank" do %>
+            <%= image_tag "players/#{player.player_nick}.png", class: "img img-responsive", alt: "Card image cap" %>
+          <% end %>
+          <div class="profile-icons"><i class="fab fa-twitter"></i></div>
           <div class="profile-name"><%= player.player_nick.titleize %></div>
           <div class="profile-username"><%= player.player_name.titleize %></div>
       </div>
@@ -70,7 +87,8 @@
   <div class="mb-5" id="last-5-audiences-chart">
     <h2>Last 5 Matches Audiences</h2>
     <p><strong>Views in Youtube match videos</strong></p>
-    <%= bar_chart @last_5_matches.map , thousands: ",", colors: ["#72BFC9", "white"] %>
+    <br>
+    <%= bar_chart @last_5_matches.map , thousands: ",", colors: ["#{@team.team_color}", "white"] %>
   </div>
 
   <br>
@@ -78,6 +96,7 @@
   <div class="mb-5" id="top-audience-table">
     <h2>Top 5 Audiences</h2>
     <p><strong>Views in Youtube match videos</strong></p>
+    <br>
     <table class="table table-dark">
         <thead>
           <tr>
