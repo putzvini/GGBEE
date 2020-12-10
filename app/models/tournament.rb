@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord
   has_many :rounds
   validates :season, :split, presence: true
-  
+
 end
 
 def audience
@@ -33,7 +33,7 @@ def banner_infos_tournaments
   response = {}
   casts = Cast.all.count
   views = sum_x(:cast_view)
-  
+
   response[:casts] = casts
   response[:views] = views
   response[:views_cast] = (views / casts).round
@@ -72,7 +72,7 @@ end
 
 def banner_infos_split(id)
   response = {}
-  
+
   casts = Round.where(tournament_id: id).count
   time = 0
   matches = 0
@@ -86,7 +86,7 @@ def banner_infos_split(id)
       views += c.cast_view
       likes += c.cast_like
   end
-  
+
   response[:casts] = casts
   response[:time] = time / 60
   response[:matches] = matches
@@ -112,7 +112,7 @@ def top_5_matches(id)
       date = m.match_date.to_formatted_s(:rfc822)
       hash = {}
       hash[:date] = date
-      hash[:views] = m.match_view 
+      hash[:views] = m.match_view
       hash[:team_blue] = Team.find(m.blue_team_id)
       hash[:team_red] = Team.find(m.red_team_id)
       array << hash
