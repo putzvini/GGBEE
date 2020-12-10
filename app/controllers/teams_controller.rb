@@ -12,8 +12,8 @@ class TeamsController < ApplicationController
     @teams = Team.all
     @team = Team.find(params[:id])
     @banner = banner_infos_team(params[:id])
-    @last_5_matches = last_5_matches(params[:id])
-    @top_5_matches = top_5_matches(params[:id])
+    @last_5_matches = last_5(params[:id])
+    @top_5_matches = top_5(params[:id])
     @players = players(params[:id])
   end
 end
