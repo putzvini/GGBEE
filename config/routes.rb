@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :tournaments, only: [:show]
   resources :teams, only: [:index, :show]
   resources :abouts, only: [:index]
-  resources :contacts, only: [:index]
+  resources :contacts, only: [:index, :new, :create]
+
   root to: 'tournaments#index'
 end

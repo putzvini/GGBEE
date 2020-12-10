@@ -1,13 +1,21 @@
-class ContactController < ApplicationController
-  def create
-    @contact = current_user.contacts.build(contact_params)
+class ContactsController < ApplicationController
+  def index
+    @contact = Contact.new(params[:contact])
+  end
 
-    if @contact.save
-      mail = RestaurantMailer.with(restaurant: @contact).create_confirmation
-      mail.deliver_now
-      redirect_to contact_path(@contact)
-    else
-      render :new
+  def create
+    @contact = Contact.new(params[:contact])
+    @contact.request = request
+    respond_to do |format|
+      if @contact.delivery
+        # re-initializ Contact object for cleared form
+        @contact = Contact.new
+        format.html { render 'index'}
+        format.js   { flash.now[:success] = @message = "Thank you for your message. I'll get back to you soon!" }
+      else
+        format.html { render 'index' }
+        format.js   { flash.now[:error] = @message = "Message did not send." }
+      end
     end
   end
 end

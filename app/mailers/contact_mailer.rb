@@ -1,10 +1,8 @@
-class ContactMailer < ApplicationMailer
-  def create_confirmation
-    @contact = params[:contact]
+class ContactsMailer < ActionMailer::Base2
+  default from: "beeggbee@gmail.com"
 
-    mail(
-      to:       @contact.user.email,
-      subject:  "Contact #{@contact.name} created!"
-    )
+  def confirmation
+    @contact = contact_params
+    mail( :to => "beeggbee@beeggbee.com", :subject => "You Have a Message From Your Website")
   end
 end
