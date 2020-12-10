@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(params[:contact])
     @contact.request = request
     respond_to do |format|
-      if @contact.delivery
+      if @contact.deliver
         # re-initializ Contact object for cleared form
         @contact = Contact.new
         format.html { render 'index'}
