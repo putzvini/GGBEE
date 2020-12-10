@@ -101,7 +101,7 @@ config.action_mailer.smtp_settings = {
   domain:               'www.ggbee.com.br',
   user_name:            ENV["GMAIL_EMAIL"],
   password:             ENV["GMAIL_PASSWORD"],
-  authentication:       'plain',
+  authentication:       :login,
   enable_starttls_auto: true  }
 ################################################################################
 # config/environments/production
